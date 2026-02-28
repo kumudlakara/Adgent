@@ -1,13 +1,19 @@
 [
   {
+<<<<<<< Updated upstream
     "id": "shop-the-rtx-5080",
     "name": "Shop the RTX-5080",
+=======
+    "id": "rtx-5090",
+    "name": "RTX 5090",
+>>>>>>> Stashed changes
     "price": "",
     "discount": "N/A",
     "delivery": "",
     "availability": "",
     "category": "custom",
     "theme": "dark",
+<<<<<<< Updated upstream
     "badge": "Shop the RTX-5080",
     "thumbnailUrl": "https://im.runware.ai/image/os/w02d10/ws/2/ii/68e3fb77-2ed2-4a74-ac1a-ceb6c4c8d478.jpg",
     "productUrl": "https://www.nvidia.com/en-gb/geforce/graphics-cards/50-series/rtx-5080/",
@@ -27,18 +33,45 @@
       {
         "label": "Compare options",
         "prompt": "What are alternatives to Shop the RTX-5080?"
+=======
+    "badge": "RTX 5090",
+    "thumbnailUrl": "https://im.runware.ai/image/os/w02d10/ws/2/ii/96f6c960-517e-4799-9c0f-b482eeaa8d18.jpg",
+    "productUrl": "https://marketplace.nvidia.com/en-gb/consumer/graphics-cards/asus-rog-astral-nvidia-geforce-rtx-5090-32gb-gaming-oc-blackwell-graphics-card/",
+    "suggestions": [
+      {
+        "label": "Learn more",
+        "prompt": "Tell me more about RTX 5090."
+      },
+      {
+        "label": "Check price",
+        "prompt": "What is the price of RTX 5090?"
+      },
+      {
+        "label": "View details",
+        "prompt": "Show me details for RTX 5090."
+      },
+      {
+        "label": "Compare options",
+        "prompt": "What are alternatives to RTX 5090?"
+>>>>>>> Stashed changes
       }
     ]
   },
   {
+<<<<<<< Updated upstream
     "id": "nvidia-rtx-5070",
     "name": "Nvidia-RTX 5070",
+=======
+    "id": "shop-the-rtx-4070ti",
+    "name": "Shop The RTX 4070Ti",
+>>>>>>> Stashed changes
     "price": "",
     "discount": "N/A",
     "delivery": "",
     "availability": "",
     "category": "custom",
     "theme": "dark",
+<<<<<<< Updated upstream
     "badge": "Nvidia-RTX 5070",
     "thumbnailUrl": "images/nvidia-rtx-5070.jpg",
     "productUrl": "https://www.coca-cola.com/gb/en",
@@ -89,6 +122,27 @@
       {
         "label": "Compare options",
         "prompt": "What are alternatives to coca-cola.com?"
+=======
+    "badge": "Shop The RTX 4070Ti",
+    "thumbnailUrl": "https://im.runware.ai/image/os/w02d10/ws/2/ii/49072207-e685-45f8-a28f-51e3cde05f71.jpg",
+    "productUrl": "https://marketplace.nvidia.com/en-gb/consumer/graphics-cards/msi-nvidia-geforce-rtx-4070-ti-super-ventus-2x-oc-16gb-gddr6x-ray-tracing-graphics-card-8448-core-2640mhz-boost/",
+    "suggestions": [
+      {
+        "label": "Learn more",
+        "prompt": "Tell me more about Shop The RTX 4070Ti."
+      },
+      {
+        "label": "Check price",
+        "prompt": "What is the price of Shop The RTX 4070Ti?"
+      },
+      {
+        "label": "View details",
+        "prompt": "Show me details for Shop The RTX 4070Ti."
+      },
+      {
+        "label": "Compare options",
+        "prompt": "What are alternatives to Shop The RTX 4070Ti?"
+>>>>>>> Stashed changes
       }
     ]
   },
@@ -151,37 +205,6 @@
       {
         "label": "Compare options",
         "prompt": "What are alternatives to Coke le lo!?"
-      }
-    ]
-  },
-  {
-    "id": "rtx-5090",
-    "name": "NVIDIA GeForce RTX 5090",
-    "price": "$1,999.99",
-    "discount": "N/A",
-    "delivery": "1-3 business days",
-    "availability": "Check availability",
-    "category": "gpu",
-    "theme": "dark",
-    "badge": "Flagship",
-    "thumbnailUrl": "https://assets.nvidia.partners/images/png/RTX5090FE_gallery-A_3x4.png",
-    "productUrl": "https://www.nvidia.com/en-us/geforce/graphics-cards/50-series/rtx-5090/",
-    "suggestions": [
-      {
-        "label": "Full details",
-        "prompt": "Show me the full details and image of the NVIDIA RTX 5090."
-      },
-      {
-        "label": "Check stock",
-        "prompt": "Is the RTX 5090 in stock anywhere right now?"
-      },
-      {
-        "label": "Compare vs 5080",
-        "prompt": "Compare the RTX 5090 vs RTX 5080 side by side."
-      },
-      {
-        "label": "Active deals",
-        "prompt": "Are there any deals or bundles on the RTX 5090?"
       }
     ]
   },
