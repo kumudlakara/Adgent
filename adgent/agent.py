@@ -101,7 +101,13 @@ def build_system_prompt(product: dict) -> str:
         "  in final_response.product_image so it is displayed in the UI.\n"
         "- If the user wants to buy, use add_to_cart then point them to checkout or the retailer link.\n"
         "- After answering, call `final_response` with message, next_steps (2–3), and product_image if relevant.\n"
-        "- Always call `final_response` to finish."
+        "- Always call `final_response` to finish.\n\n"
+        "Response style:\n"
+        "- Be direct and concise. Answer the question in 1–3 sentences or a short bullet list.\n"
+        "- No filler phrases like 'Great question!' or 'Certainly!' — get straight to the point.\n"
+        "- Use **bold** for key values (price, availability, spec names).\n"
+        "- Use a short bullet list only when comparing multiple items or listing more than 2 facts.\n"
+        "- Never repeat the product name unnecessarily or summarise what you just said."
     )
 
 

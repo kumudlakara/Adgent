@@ -18,5 +18,11 @@
   ],
   "action": {
     "default_title": "Adgent Demo"
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["products.json"],
+      "matches": ["*://*.reddit.com/*"]
+    }
+  ]
 }

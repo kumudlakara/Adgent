@@ -1,6 +1,12 @@
 :root {
   --adgent-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --adgent-gold: #1ad6ff;
+  --adgent-gold-dim: rgba(26, 214, 255, 0.35);
+  --adgent-gold-subtle: rgba(26, 214, 255, 0.08);
+  --adgent-gold-hover: rgba(26, 214, 255, 0.16);
 }
+
+/* ─── Root wrapper ─────────────────────────────────────────────────── */
 
 #adgent-banner-root {
   display: block;
@@ -24,17 +30,19 @@
   font-family: var(--adgent-font);
 }
 
+/* ─── Banner shell ─────────────────────────────────────────────────── */
+
 #adgent-banner {
   display: block;
   width: 100%;
   max-width: 760px;
   margin: 0;
-  border-radius: 16px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
   overflow: hidden;
   border: 1px solid transparent;
   position: relative;
-  transition: box-shadow 220ms ease, border-radius 220ms ease, transform 220ms ease, opacity 220ms ease;
+  transition: box-shadow 220ms ease, transform 220ms ease, opacity 220ms ease;
 }
 
 #adgent-banner-root[data-placement="side"] {
@@ -43,10 +51,13 @@
 
 #adgent-banner[data-view="side"] {
   max-width: 300px;
-  border-radius: 10px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.22);
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.36);
   opacity: 0;
-  transform: translateX(8px);
+  transform: translateX(10px);
 }
 
 #adgent-banner.adgent-side-visible {
@@ -55,42 +66,57 @@
 }
 
 .adgent-docking {
-  opacity: 0.86;
-  transform: translateX(-8px);
+  opacity: 0.82;
+  transform: translateX(-6px);
 }
 
+/* ─── Themes ───────────────────────────────────────────────────────── */
+
 #adgent-banner[data-theme="dark"] {
-  background: #161a1f;
-  color: #f4f6f8;
-  border-color: #2a3442;
+  background: #111110;
+  color: #e8e2d9;
+  border-color: #252420;
 }
 
 #adgent-banner[data-theme="light"] {
   background: #ffffff;
-  color: #111827;
-  border-color: #d1d5db;
+  color: #1a1a18;
+  border-color: #e2ddd6;
 }
 
 #adgent-banner[data-theme="warm"] {
-  background: #fff7ed;
-  color: #431407;
-  border-color: #fdba74;
+  background: #1c1610;
+  color: #f0e6d0;
+  border-color: #3a2e1e;
 }
 
 #adgent-banner[data-theme="cool"] {
-  background: #ecfeff;
-  color: #083344;
-  border-color: #67e8f9;
+  background: #0f1318;
+  color: #dce8f0;
+  border-color: #1e2c38;
 }
+
+/* ─── Header ───────────────────────────────────────────────────────── */
 
 #adgent-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 12px;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
-  font-size: 13px;
-  font-weight: 700;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+#adgent-banner[data-theme="light"] #adgent-header {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+#adgent-banner[data-theme="dark"] #adgent-prompt-row,
+#adgent-banner[data-theme="warm"] #adgent-prompt-row,
+#adgent-banner[data-theme="cool"] #adgent-prompt-row {
+  border-top-color: rgba(255, 255, 255, 0.07);
 }
 
 #adgent-header-title {
@@ -100,152 +126,273 @@
 }
 
 #adgent-promoted {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
-  opacity: 0.85;
-  padding: 2px 6px;
-  border-radius: 999px;
-  background: rgba(148, 163, 184, 0.22);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid currentColor;
 }
 
 #adgent-header-controls {
   display: flex;
-  gap: 8px;
+  gap: 6px;
 }
 
 .adgent-btn-ghost {
   all: unset;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1;
-  padding: 4px 7px;
-  border-radius: 6px;
-  background: rgba(148, 163, 184, 0.22);
+  padding: 3px 7px;
+  border-radius: 5px;
+  opacity: 0.45;
+  transition: opacity 140ms ease;
 }
+
+.adgent-btn-ghost:hover {
+  opacity: 0.9;
+}
+
+/* ─── Content area ─────────────────────────────────────────────────── */
 
 #adgent-content {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: 10px;
-  padding: 12px;
+  flex: 1;
+  min-height: 0;
   font-size: 13px;
+  overflow: hidden;
 }
 
-#adgent-session-tabs {
+#adgent-scroll-area {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  padding-bottom: 2px;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 14px 8px;
   scrollbar-width: thin;
 }
 
-.adgent-session-tab {
-  all: unset;
-  cursor: pointer;
-  font-size: 11px;
-  font-weight: 700;
-  white-space: nowrap;
-  padding: 5px 8px;
-  border-radius: 999px;
-  background: rgba(148, 163, 184, 0.22);
-}
-
-.adgent-session-tab.active {
-  background: #2563eb;
-  color: #ffffff;
-}
-
-#adgent-feed-subtitle {
-  font-size: 12px;
-  opacity: 0.82;
-  margin-top: -2px;
-}
-
-#adgent-product-name {
-  font-size: 15px;
-  font-weight: 700;
-  min-width: 0;
-}
-
-#adgent-product-meta {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(100px, 1fr));
-  gap: 6px;
-  min-width: 0;
-}
-
-.adgent-chip {
-  font-size: 12px;
-  padding: 6px 8px;
-  border-radius: 8px;
-  background: rgba(148, 163, 184, 0.2);
+/* Prevent flex children from shrinking — scroll instead */
+#adgent-scroll-area > * {
+  flex-shrink: 0;
 }
 
 #adgent-prompt-row {
   display: flex;
   gap: 6px;
   min-width: 0;
+  flex-shrink: 0;
+  padding: 8px 14px 14px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
+
+/* ─── Session tabs ─────────────────────────────────────────────────── */
+
+#adgent-session-tabs {
+  display: flex;
+  gap: 5px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+}
+
+.adgent-session-tab {
+  all: unset;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 4px 10px;
+  border-radius: 4px;
+  opacity: 0.45;
+  border: 1px solid currentColor;
+  transition: opacity 140ms ease;
+}
+
+.adgent-session-tab.active {
+  opacity: 1;
+  border-color: var(--adgent-gold);
+  color: var(--adgent-gold);
+}
+
+/* ─── Product image — side banner ──────────────────────────────────── */
+
+#adgent-product-link {
+  display: block;
+  flex-shrink: 0;
+  border-radius: 8px;
+  transition: opacity 140ms ease;
+}
+
+#adgent-product-link:hover {
+  opacity: 0.85;
+}
+
+#adgent-product-image {
+  display: block;
+  width: 100%;
+  max-height: 160px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 12px;
+}
+
+#adgent-banner[data-theme="light"] #adgent-product-image {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* ─── Loading indicator ────────────────────────────────────────────── */
+
+.adgent-loading {
+  color: var(--adgent-gold);
+  animation: adgentPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes adgentPulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+/* ─── Agent response ───────────────────────────────────────────────── */
+
+#adgent-response,
+.adgent-feed-response {
+  min-height: 16px;
+  font-size: 12px;
+  line-height: 1.6;
+  opacity: 0.82;
+  width: 100%;
+}
+
+#adgent-response p,
+.adgent-feed-response p {
+  margin: 0 0 6px;
+}
+
+#adgent-response p:last-child,
+.adgent-feed-response p:last-child {
+  margin-bottom: 0;
+}
+
+#adgent-response ul,
+.adgent-feed-response ul {
+  margin: 0 0 6px;
+  padding-left: 16px;
+}
+
+#adgent-response li,
+.adgent-feed-response li {
+  margin-bottom: 3px;
+}
+
+#adgent-response strong,
+.adgent-feed-response strong {
+  font-weight: 600;
+  opacity: 1;
+}
+
+/* ─── Suggestion / next-step chips ────────────────────────────────── */
+
+#adgent-next-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  flex-shrink: 0;
+}
+
+.adgent-next-step-chip {
+  all: unset;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--adgent-gold-dim);
+  color: var(--adgent-gold);
+  background: var(--adgent-gold-subtle);
+  white-space: nowrap;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.adgent-next-step-chip:hover {
+  background: var(--adgent-gold-hover);
+  border-color: var(--adgent-gold);
+}
+
+/* ─── Prompt input row ─────────────────────────────────────────────── */
 
 #adgent-prompt-input {
   all: unset;
   box-sizing: border-box;
   flex: 1;
-  font-size: 13px;
-  padding: 8px 10px;
-  border-radius: 8px;
-  background: rgba(148, 163, 184, 0.16);
+  min-width: 0;
+  color: inherit;
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 8px 11px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  transition: border-color 140ms ease;
+}
+
+#adgent-banner[data-theme="light"] #adgent-prompt-input {
+  border-color: rgba(0, 0, 0, 0.14);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+#adgent-prompt-input:focus {
+  border-color: var(--adgent-gold-dim);
 }
 
 #adgent-send-btn {
   all: unset;
   cursor: pointer;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 8px 10px;
-  border-radius: 8px;
-  background: #2563eb;
-  color: white;
-}
-
-#adgent-response {
-  min-height: 16px;
-  font-size: 12px;
-  opacity: 0.9;
-  width: 100%;
-}
-
-#adgent-badge {
   font-size: 11px;
-  opacity: 0.8;
-  width: 100%;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: var(--adgent-gold);
+  color: #040d14;
+  transition: opacity 120ms ease;
 }
 
-#adgent-banner[data-view="side"] #adgent-product-meta {
-  grid-template-columns: 1fr;
+#adgent-send-btn:hover {
+  opacity: 0.88;
 }
 
-@keyframes adgentDockIn {
-  from {
-    opacity: 0.75;
-    transform: translateX(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+#adgent-send-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
 }
+
+#adgent-banner.minimized #adgent-content {
+  display: none;
+}
+
+/* ─── Feed card ────────────────────────────────────────────────────── */
 
 .adgent-feed-card {
-  width: min(760px, calc(100% - 24px));
-  margin: 12px auto;
-  border-radius: 16px;
-  border: 1px solid #d1d5db;
+  width: min(720px, calc(100% - 24px));
+  margin: 14px auto;
+  border-radius: 12px;
+  border: 1px solid #e2ddd6;
   background: #ffffff;
-  color: #111827;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-  padding: 12px;
+  color: #1a1a18;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.09);
+  padding: 14px;
   transition: transform 200ms ease, box-shadow 200ms ease, opacity 200ms ease;
   position: relative;
   z-index: 2;
@@ -254,66 +401,117 @@
 }
 
 .adgent-feed-card[data-theme="dark"] {
-  background: #161a1f;
-  color: #f4f6f8;
-  border-color: #2a3442;
+  background: #111110;
+  color: #e8e2d9;
+  border-color: #252420;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .adgent-feed-card[data-theme="warm"] {
-  background: #fff7ed;
-  color: #431407;
-  border-color: #fdba74;
+  background: #1c1610;
+  color: #f0e6d0;
+  border-color: #3a2e1e;
 }
 
 .adgent-feed-card[data-theme="cool"] {
-  background: #ecfeff;
-  color: #083344;
-  border-color: #67e8f9;
+  background: #0f1318;
+  color: #dce8f0;
+  border-color: #1e2c38;
 }
 
 .adgent-feed-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .adgent-feed-author {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.65;
 }
 
 .adgent-feed-promoted {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid currentColor;
+}
+
+/* ─── Feed card thumbnail ──────────────────────────────────────────── */
+
+.adgent-feed-thumbnail-link {
+  display: block;
+  border-radius: 8px;
+  transition: opacity 140ms ease;
+}
+
+.adgent-feed-thumbnail-link:hover {
   opacity: 0.85;
-  padding: 2px 6px;
-  border-radius: 999px;
-  background: rgba(148, 163, 184, 0.22);
+}
+
+.adgent-feed-thumbnail {
+  display: block;
+  width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.adgent-feed-card[data-theme="dark"] .adgent-feed-thumbnail,
+.adgent-feed-card[data-theme="warm"] .adgent-feed-thumbnail,
+.adgent-feed-card[data-theme="cool"] .adgent-feed-thumbnail {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .adgent-feed-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 1.3;
-  margin-bottom: 6px;
-}
-
-.adgent-feed-copy {
-  font-size: 13px;
-  opacity: 0.88;
-  margin-bottom: 8px;
-}
-
-.adgent-feed-chips {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(100px, 1fr));
-  gap: 6px;
+  letter-spacing: -0.01em;
   margin-bottom: 10px;
 }
+
+/* ─── Suggestion chips on feed card ───────────────────────────────── */
+
+.adgent-feed-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.adgent-suggestion-chip {
+  all: unset;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--adgent-gold-dim);
+  color: var(--adgent-gold);
+  background: var(--adgent-gold-subtle);
+  white-space: nowrap;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+
+.adgent-suggestion-chip:hover {
+  background: var(--adgent-gold-hover);
+  border-color: var(--adgent-gold);
+}
+
+/* ─── Feed card ask row ────────────────────────────────────────────── */
 
 .adgent-feed-ask-row {
   display: flex;
@@ -324,134 +522,60 @@
   all: unset;
   box-sizing: border-box;
   flex: 1;
-  font-size: 13px;
-  padding: 8px 10px;
-  border-radius: 8px;
-  background: rgba(148, 163, 184, 0.16);
+  min-width: 0;
+  color: inherit;
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 8px 11px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: rgba(0, 0, 0, 0.04);
   pointer-events: auto;
+  transition: border-color 140ms ease;
+}
+
+.adgent-feed-card[data-theme="dark"] .adgent-feed-input,
+.adgent-feed-card[data-theme="warm"] .adgent-feed-input,
+.adgent-feed-card[data-theme="cool"] .adgent-feed-input {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .adgent-feed-ask-btn {
   all: unset;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  padding: 8px 10px;
-  border-radius: 8px;
-  background: #2563eb;
-  color: white;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: var(--adgent-gold);
+  color: #040d14;
   pointer-events: auto;
+  transition: opacity 120ms ease;
+}
+
+.adgent-feed-ask-btn:hover {
+  opacity: 0.88;
 }
 
 .adgent-feed-response {
-  font-size: 12px;
-  min-height: 16px;
   margin-top: 8px;
-  opacity: 0.9;
 }
 
 .adgent-feed-card-engaged {
-  opacity: 0.7;
+  opacity: 0.65;
   transform: scale(0.99);
 }
 
-#adgent-banner.minimized #adgent-content {
-  display: none;
-}
-
-/* --- Product image in side banner --- */
-#adgent-product-image {
-  display: none;
-  width: 100%;
-  max-height: 160px;
-  object-fit: contain;
-  border-radius: 8px;
-  background: rgba(148, 163, 184, 0.08);
-  padding: 8px;
-}
-
-#adgent-banner[data-theme="dark"] #adgent-product-image {
-  background: rgba(255, 255, 255, 0.04);
-}
-
-/* --- Feed card badge --- */
-.adgent-feed-badge {
-  font-size: 11px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: #2563eb;
-  color: #ffffff;
-}
-
-/* --- Suggestion chips on feed card (shown on ad click) --- */
-.adgent-feed-suggestions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 6px;
-  margin-bottom: 4px;
-}
-
-.adgent-suggestion-chip {
-  all: unset;
-  cursor: pointer;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 5px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(37, 99, 235, 0.35);
-  color: #2563eb;
-  background: rgba(37, 99, 235, 0.07);
-  white-space: nowrap;
-  transition: background 120ms ease;
-}
-
-.adgent-suggestion-chip:hover {
-  background: rgba(37, 99, 235, 0.16);
-}
-
-.adgent-feed-card[data-theme="dark"] .adgent-suggestion-chip {
-  border-color: rgba(147, 197, 253, 0.4);
-  color: #93c5fd;
-  background: rgba(147, 197, 253, 0.08);
-}
-
-.adgent-feed-card[data-theme="dark"] .adgent-suggestion-chip:hover {
-  background: rgba(147, 197, 253, 0.18);
-}
-
-/* --- Next-step chips in side banner (shown after agent response) --- */
-#adgent-next-steps {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-
-.adgent-next-step-chip {
-  all: unset;
-  cursor: pointer;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 4px 9px;
-  border-radius: 999px;
-  border: 1px solid rgba(37, 99, 235, 0.3);
-  color: #2563eb;
-  background: rgba(37, 99, 235, 0.06);
-  white-space: nowrap;
-  transition: background 120ms ease;
-}
-
-.adgent-next-step-chip:hover {
-  background: rgba(37, 99, 235, 0.14);
-}
-
-#adgent-banner[data-theme="dark"] .adgent-next-step-chip {
-  border-color: rgba(147, 197, 253, 0.35);
-  color: #93c5fd;
-  background: rgba(147, 197, 253, 0.07);
-}
-
-#adgent-banner[data-theme="dark"] .adgent-next-step-chip:hover {
-  background: rgba(147, 197, 253, 0.16);
+@keyframes adgentDockIn {
+  from {
+    opacity: 0.7;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

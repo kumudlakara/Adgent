@@ -1,6 +1,5 @@
-(() => {
+(async () => {
   const ROOT_ID = "adgent-banner-root";
-  const SIDE_BANNER_ID = "adgent-banner";
   const POSTS_INTERVAL = 12;
   const isReddit = /(^|\.)reddit\.com$/.test(window.location.hostname);
 
@@ -13,100 +12,24 @@
     staleRoot.remove();
   }
 
-  // Products sourced from nvidia-catalog/catalog.json (RTX 50-series, real pricing & images)
-  const hardcodedProducts = [
-    {
-      id: "rtx-5090",
-      name: "NVIDIA GeForce RTX 5090",
-      price: "$1,999.99",
-      discount: "N/A",
-      delivery: "1-3 business days",
-      availability: "Check availability",
-      category: "gpu",
-      badge: "Flagship",
-      thumbnailUrl: "https://assets.nvidia.partners/images/png/RTX5090FE_gallery-A_3x4.png",
-      suggestions: [
-        { label: "Full details", prompt: "Show me the full details and image of the NVIDIA RTX 5090." },
-        { label: "Check stock", prompt: "Is the RTX 5090 in stock anywhere right now?" },
-        { label: "Compare vs 5080", prompt: "Compare the RTX 5090 vs RTX 5080 side by side." },
-        { label: "Active deals", prompt: "Are there any deals or bundles on the RTX 5090?" }
-      ]
-    },
-    {
-      id: "rtx-5080",
-      name: "NVIDIA GeForce RTX 5080",
-      price: "$999.99",
-      discount: "N/A",
-      delivery: "1-3 business days",
-      availability: "Check availability",
-      category: "gpu",
-      badge: "Best Seller",
-      thumbnailUrl: "https://assets.nvidia.partners/images/90YV0LV0-MVAA00-preview.webp",
-      suggestions: [
-        { label: "Full details", prompt: "Show me the full details and image of the RTX 5080." },
-        { label: "Check retailers", prompt: "Which retailer has the RTX 5080 cheapest?" },
-        { label: "Compare vs 5090", prompt: "How does the RTX 5080 compare to the RTX 5090?" },
-        { label: "Add to cart", prompt: "Add the NVIDIA RTX 5080 to my cart." }
-      ]
-    },
-    {
-      id: "rtx-5070-ti",
-      name: "NVIDIA GeForce RTX 5070 Ti",
-      price: "$749.99",
-      discount: "N/A",
-      delivery: "1-3 business days",
-      availability: "Check availability",
-      category: "gpu",
-      badge: null,
-      thumbnailUrl: "https://assets.nvidia.partners/images/90YV0LX0-MVAA00.webp",
-      suggestions: [
-        { label: "Full details", prompt: "Show me the full details and image of the RTX 5070 Ti." },
-        { label: "Best price", prompt: "Where can I buy the RTX 5070 Ti at the lowest price?" },
-        { label: "Compare vs 5080", prompt: "How does the RTX 5070 Ti compare to the RTX 5080?" },
-        { label: "Add to cart", prompt: "Add an ASUS RTX 5070 Ti to my cart." }
-      ]
-    },
-    {
-      id: "rtx-5070",
-      name: "NVIDIA GeForce RTX 5070",
-      price: "$549.99",
-      discount: "N/A",
-      delivery: "1-3 business days",
-      availability: "Check availability",
-      category: "gpu",
-      badge: "New",
-      thumbnailUrl: "https://assets.nvidia.partners/images/PRIME-RTX5070-12G_box with card_.webp",
-      suggestions: [
-        { label: "Full details", prompt: "Show me the full details and image of the RTX 5070." },
-        { label: "Current deals", prompt: "Are there any bundles or offers on the RTX 5070?" },
-        { label: "Compare vs 5070 Ti", prompt: "Compare the RTX 5070 vs RTX 5070 Ti." },
-        { label: "Add to cart", prompt: "Add the NVIDIA RTX 5070 Founder Edition to my cart." }
-      ]
-    },
-    {
-      id: "rtx-5060-ti",
-      name: "NVIDIA GeForce RTX 5060 Ti",
-      price: "$379.99",
-      discount: "N/A",
-      delivery: "1-3 business days",
-      availability: "Check availability",
-      category: "gpu",
-      badge: null,
-      thumbnailUrl: "https://assets.nvidia.partners/images/png/90YV0M90-MVAA00.png",
-      suggestions: [
-        { label: "Full details", prompt: "Show me the full details and image of the RTX 5060 Ti." },
-        { label: "Check stock", prompt: "Is the RTX 5060 Ti available to buy now?" },
-        { label: "Best value", prompt: "Which GPU gives the best value for money under $500?" },
-        { label: "Add to cart", prompt: "Add an RTX 5060 Ti to my cart." }
-      ]
-    }
-  ];
+  let products;
+  try {
+    const url = chrome.runtime.getURL("products.json");
+    const res = await fetch(url);
+    products = await res.json();
+  } catch {
+    return;
+  }
+
+  if (!products?.length) {
+    return;
+  }
 
   const cookieProfile = getCookieProfile();
   const state = {
-    products: hardcodedProducts,
+    products,
     cookieProfile,
-    currentProduct: selectProductForProfile(hardcodedProducts, cookieProfile),
+    currentProduct: selectProductForProfile(products, cookieProfile),
     isDockedToSide: false,
     side: null,
     observer: null,
@@ -114,6 +37,7 @@
     activeSessionId: null,
     nextSessionId: 1,
     nextFeedCardId: 1,
+    nextAdIndex: 0,
     postSequence: 0,
     lastAdSequence: 0
   };
@@ -131,7 +55,11 @@ function getCookieProfile() {
     .filter(Boolean)
     .map((part) => {
       const [rawKey, ...rawValue] = part.split("=");
-      return [decodeURIComponent(rawKey || ""), decodeURIComponent(rawValue.join("=") || "")];
+      try {
+        return [decodeURIComponent(rawKey || ""), decodeURIComponent(rawValue.join("=") || "")];
+      } catch {
+        return [rawKey || "", rawValue.join("=") || ""];
+      }
     });
 
   const cookieMap = Object.fromEntries(cookiePairs);
@@ -169,7 +97,7 @@ function selectProductForProfile(products, profile) {
   return products.find((product) => product.category === profile.category) || products[0];
 }
 
-function pickProductFromPrompt(products, prompt) {
+function pickProductFromPrompt(products, prompt, fallback = null) {
   const lowerPrompt = prompt.toLowerCase();
   // Most-specific match first to avoid "5070" matching "5070 ti"
   const keywordMap = [
@@ -183,70 +111,43 @@ function pickProductFromPrompt(products, prompt) {
 
   for (const [id, keywords] of keywordMap) {
     if (keywords.some((kw) => lowerPrompt.includes(kw))) {
-      return products.find((p) => p.id === id) || products[0];
+      return products.find((p) => p.id === id) || fallback || products[0];
     }
   }
 
-  return products[0];
+  // No GPU keyword found — keep whatever product is already active
+  return fallback || products[0];
 }
 
 function renderProduct(elements, product) {
-  elements.productName.textContent = product.name;
-  elements.price.textContent = `Price: ${product.price}`;
-  elements.discount.textContent = `Discount: ${product.discount}`;
-  elements.delivery.textContent = `Delivery: ${product.delivery}`;
-  elements.availability.textContent = `Stock: ${product.availability}`;
-}
-
-function renderBadge(elements, profile) {
-  const returner = profile.hasReturningUserSignal ? "Returning user" : "New user";
-  elements.badge.textContent = `${returner} • Theme: ${profile.theme} • Interest: ${profile.category}`;
-}
-
-function hashString(value) {
-  let hash = 0;
-  for (let i = 0; i < value.length; i += 1) {
-    hash = (hash << 5) - hash + value.charCodeAt(i);
-    hash |= 0;
+  if (elements.productImage) {
+    elements.productImage.src = product.thumbnailUrl || "";
+    elements.productImage.alt = product.name || "";
+    elements.productImage.style.display = product.thumbnailUrl ? "block" : "none";
   }
-  return hash;
 }
 
-function askBackend(prompt, currentProduct, cookieProfile) {
-  return new Promise((resolve, reject) => {
-    chrome.runtime.sendMessage(
-      {
-        type: "ADGENT_QUERY",
-        prompt,
-        currentProduct,
-        cookieProfile
-      },
-      (response) => {
-        if (chrome.runtime.lastError) {
-          reject(new Error(chrome.runtime.lastError.message));
-          return;
-        }
-
-        if (!response?.ok) {
-          reject(new Error(response?.error || "Unknown backend error"));
-          return;
-        }
-
-        resolve(response.result);
-      }
-    );
+async function askBackend(prompt, currentProduct, cookieProfile) {
+  const response = await fetch("http://localhost:8787/api/ad-agent/query", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ prompt, currentProduct, cookieProfile })
   });
+  if (!response.ok) {
+    throw new Error(`Backend responded with ${response.status}`);
+  }
+  return response.json();
 }
 
-function createSideBanner(state, rootId, sideBannerId) {
+function createSideBanner(state, ROOT_ID, sideBannerId) {
   const root = document.createElement("div");
-  root.id = rootId;
+  root.id = ROOT_ID;
   root.setAttribute("data-placement", "side");
   root.setAttribute("data-visible", "false");
 
   const banner = document.createElement("section");
   banner.id = sideBannerId;
-  banner.setAttribute("data-theme", state.cookieProfile.theme);
+  banner.setAttribute("data-theme", state.currentProduct.theme || "light");
   banner.setAttribute("data-view", "side");
 
   banner.innerHTML = `
@@ -261,23 +162,18 @@ function createSideBanner(state, rootId, sideBannerId) {
       </div>
     </div>
     <div id="adgent-content">
-      <div id="adgent-session-tabs"></div>
-      <img id="adgent-product-image" src="" alt="" aria-hidden="true" />
-      <div id="adgent-product-name"></div>
-      <div id="adgent-feed-subtitle">Agentic ad assistant</div>
-      <div id="adgent-product-meta">
-        <div class="adgent-chip" id="adgent-price"></div>
-        <div class="adgent-chip" id="adgent-discount"></div>
-        <div class="adgent-chip" id="adgent-delivery"></div>
-        <div class="adgent-chip" id="adgent-availability"></div>
+      <div id="adgent-scroll-area">
+        <div id="adgent-session-tabs"></div>
+        <a id="adgent-product-link" href="#" target="_blank" rel="noopener noreferrer">
+          <img id="adgent-product-image" src="" alt="" />
+        </a>
+        <div id="adgent-response"></div>
+        <div id="adgent-next-steps"></div>
       </div>
       <div id="adgent-prompt-row">
-        <input id="adgent-prompt-input" type="text" placeholder="Ask for another product..." />
+        <input id="adgent-prompt-input" type="text" placeholder="Ask about this product..." />
         <button id="adgent-send-btn">Ask</button>
       </div>
-      <div id="adgent-response"></div>
-      <div id="adgent-next-steps"></div>
-      <div id="adgent-badge"></div>
     </div>
   `;
 
@@ -287,17 +183,12 @@ function createSideBanner(state, rootId, sideBannerId) {
   const elements = {
     root,
     banner,
+    productLink: banner.querySelector("#adgent-product-link"),
     productImage: banner.querySelector("#adgent-product-image"),
-    productName: banner.querySelector("#adgent-product-name"),
-    price: banner.querySelector("#adgent-price"),
-    discount: banner.querySelector("#adgent-discount"),
-    delivery: banner.querySelector("#adgent-delivery"),
-    availability: banner.querySelector("#adgent-availability"),
     promptInput: banner.querySelector("#adgent-prompt-input"),
     sendButton: banner.querySelector("#adgent-send-btn"),
     response: banner.querySelector("#adgent-response"),
     nextSteps: banner.querySelector("#adgent-next-steps"),
-    badge: banner.querySelector("#adgent-badge"),
     tabs: banner.querySelector("#adgent-session-tabs"),
     minimizeButton: banner.querySelector("#adgent-min-btn"),
     closeButton: banner.querySelector("#adgent-close-btn")
@@ -403,7 +294,8 @@ function injectRecurringFeedAds(state, interval) {
       return;
     }
 
-    const product = state.products[sequence % state.products.length];
+    const product = state.products[state.nextAdIndex % state.products.length];
+    state.nextAdIndex += 1;
     const feedCard = createFeedAdCard(product, state);
     post.dataset.adgentAttached = "1";
     post.insertAdjacentElement("afterend", feedCard);
@@ -414,12 +306,14 @@ function injectRecurringFeedAds(state, interval) {
 function createFeedAdCard(product, state) {
   const card = document.createElement("article");
   card.className = "adgent-feed-card";
-  card.setAttribute("data-theme", state.cookieProfile.theme);
+  card.setAttribute("data-theme", product.theme || "light");
   card.dataset.adgentCardId = `feed-${state.nextFeedCardId}`;
   state.nextFeedCardId += 1;
 
-  const badgeHtml = product.badge
-    ? `<span class="adgent-feed-badge">${escapeHtml(product.badge)}</span>`
+  const thumbnailHtml = product.thumbnailUrl
+    ? `<a href="${escapeHtml(product.productUrl || "#")}" target="_blank" rel="noopener noreferrer" class="adgent-feed-thumbnail-link">
+        <img class="adgent-feed-thumbnail" src="${escapeHtml(product.thumbnailUrl)}" alt="${escapeHtml(product.name)}" />
+      </a>`
     : "";
 
   const suggestionsHtml = (product.suggestions || [])
@@ -432,15 +326,9 @@ function createFeedAdCard(product, state) {
         <span>u/AdgentOfficial</span>
         <span class="adgent-feed-promoted">Promoted</span>
       </div>
-      ${badgeHtml}
     </div>
     <div class="adgent-feed-title">${escapeHtml(product.name)}</div>
-    <div class="adgent-feed-copy">Ask Adgent anything — specs, availability, comparisons, or add to cart.</div>
-    <div class="adgent-feed-chips">
-      <span class="adgent-chip">Price: ${escapeHtml(product.price)}</span>
-      <span class="adgent-chip">Delivery: ${escapeHtml(product.delivery)}</span>
-      <span class="adgent-chip">Stock: ${escapeHtml(product.availability)}</span>
-    </div>
+    ${thumbnailHtml}
     <div class="adgent-feed-suggestions">${suggestionsHtml}</div>
     <div class="adgent-feed-ask-row">
       <input class="adgent-feed-input" type="text" placeholder="Ask Adgent about this product" />
@@ -509,10 +397,15 @@ function runAskFlow(state, prompt, feedContext) {
   dockToSide(state, feedContext?.sourceCard || null);
   const sideElements = state.side.elements;
   renderSessionTabs(state);
-  sideElements.promptInput.value = prompt;
+  renderActiveSession(state);  // show the clicked product immediately
+  sideElements.promptInput.value = "";
   sideElements.sendButton.textContent = "...";
   sideElements.sendButton.setAttribute("disabled", "true");
-  sideElements.response.textContent = "Checking product, delivery, and discounts...";
+
+  // First prompt only — show loading indicator (no previous response to keep)
+  if (!session.lastResponse) {
+    sideElements.response.innerHTML = "<p class=\"adgent-loading\">Collecting product info\u2026</p>";
+  }
 
   if (feedContext?.askButton) {
     feedContext.askButton.textContent = "...";
@@ -520,15 +413,15 @@ function runAskFlow(state, prompt, feedContext) {
   }
 
   if (feedContext?.responseElement) {
-    feedContext.responseElement.textContent = "Moving to side assistant and fetching details...";
+    feedContext.responseElement.innerHTML = "<p>Fetching details…</p>";
   }
 
   const baseProduct = session.product;
 
   askBackend(prompt, baseProduct, state.cookieProfile)
     .then((backendResult) => {
-      // Update session product if the agent discussed a different GPU
-      const nextProduct = pickProductFromPrompt(state.products, prompt);
+      // Switch product only if the prompt explicitly names a different GPU
+      const nextProduct = pickProductFromPrompt(state.products, prompt, session.product);
       session.product = {
         ...nextProduct,
         delivery: backendResult?.delivery || nextProduct.delivery,
@@ -543,11 +436,11 @@ function runAskFlow(state, prompt, feedContext) {
       session.productImage = backendResult?.product_image || null;
       renderActiveSession(state);
       if (feedContext?.responseElement) {
-        feedContext.responseElement.textContent = message;
+        feedContext.responseElement.innerHTML = renderMarkdown(message);
       }
     })
     .catch(() => {
-      const nextProduct = pickProductFromPrompt(state.products, prompt);
+      const nextProduct = pickProductFromPrompt(state.products, prompt, session.product);
       session.product = nextProduct;
       state.currentProduct = session.product;
       session.lastPrompt = prompt;
@@ -556,7 +449,7 @@ function runAskFlow(state, prompt, feedContext) {
       session.lastResponse = fallbackMessage;
       renderActiveSession(state);
       if (feedContext?.responseElement) {
-        feedContext.responseElement.textContent = fallbackMessage;
+        feedContext.responseElement.innerHTML = renderMarkdown(fallbackMessage);
       }
     })
     .finally(() => {
@@ -576,7 +469,6 @@ function ensureSideBanner(state) {
 
   state.side = createSideBanner(state, "adgent-banner-root", "adgent-banner");
   renderProduct(state.side.elements, state.currentProduct);
-  renderBadge(state.side.elements, state.cookieProfile);
 }
 
 function getOrCreateSession(state, feedContext) {
@@ -651,6 +543,7 @@ function renderSessionTabs(state) {
 
 function renderProductImage(state, imageUrl) {
   const el = state.side?.elements?.productImage;
+  const link = state.side?.elements?.productLink;
   if (!el) {
     return;
   }
@@ -659,10 +552,18 @@ function renderProductImage(state, imageUrl) {
     el.alt = "Product image";
     el.removeAttribute("aria-hidden");
     el.style.display = "block";
+    if (link) {
+      const productUrl = getActiveSession(state)?.product?.productUrl;
+      link.href = productUrl || "#";
+      link.style.display = "block";
+    }
   } else {
     el.src = "";
     el.style.display = "none";
     el.setAttribute("aria-hidden", "true");
+    if (link) {
+      link.style.display = "none";
+    }
   }
 }
 
@@ -690,12 +591,16 @@ function renderActiveSession(state) {
     return;
   }
 
-  renderProduct(state.side.elements, session.product);
-  renderBadge(state.side.elements, state.cookieProfile);
-  state.side.elements.promptInput.value = session.lastPrompt || "";
-  state.side.elements.response.textContent = session.lastResponse || "";
-  renderProductImage(state, session.productImage || null);
-  renderNextSteps(state, session.nextSteps || []);
+  // Update banner theme to match the active session's product
+  state.side.banner.setAttribute("data-theme", session.product.theme || "light");
+
+  // Agent-provided image takes priority, otherwise fall back to product thumbnail
+  renderProductImage(state, session.productImage || session.product.thumbnailUrl || null);
+  state.side.elements.promptInput.value = "";
+  state.side.elements.response.innerHTML = renderMarkdown(session.lastResponse || "");
+  // Show product suggestion chips before first query, next-step chips after
+  const chips = session.lastPrompt ? (session.nextSteps || []) : (session.product.suggestions || []);
+  renderNextSteps(state, chips);
 }
 
 function shortenLabel(value, limit) {
@@ -782,4 +687,27 @@ function escapeHtml(value) {
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
+}
+
+function renderMarkdown(raw) {
+  if (!raw) return "";
+  const blocks = String(raw).trim().split(/\n{2,}/);
+  return blocks
+    .map((block) => {
+      const lines = block.split("\n").filter((l) => l.trim());
+      if (!lines.length) return "";
+      const isList = lines.every((l) => /^\s*[-•*]\s/.test(l));
+      if (isList) {
+        const items = lines
+          .map((l) => `<li>${inlineMarkdown(l.replace(/^\s*[-•*]\s+/, ""))}</li>`)
+          .join("");
+        return `<ul>${items}</ul>`;
+      }
+      return `<p>${lines.map(inlineMarkdown).join("<br>")}</p>`;
+    })
+    .join("");
+}
+
+function inlineMarkdown(text) {
+  return escapeHtml(text).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
 }
