@@ -1,5 +1,98 @@
 [
   {
+    "id": "shop-the-rtx-5080",
+    "name": "Shop the RTX-5080",
+    "price": "",
+    "discount": "N/A",
+    "delivery": "",
+    "availability": "",
+    "category": "custom",
+    "theme": "dark",
+    "badge": "Shop the RTX-5080",
+    "thumbnailUrl": "https://im.runware.ai/image/os/w02d10/ws/2/ii/68e3fb77-2ed2-4a74-ac1a-ceb6c4c8d478.jpg",
+    "productUrl": "https://www.nvidia.com/en-gb/geforce/graphics-cards/50-series/rtx-5080/",
+    "suggestions": [
+      {
+        "label": "Learn more",
+        "prompt": "Tell me more about Shop the RTX-5080."
+      },
+      {
+        "label": "Check price",
+        "prompt": "What is the price of Shop the RTX-5080?"
+      },
+      {
+        "label": "View details",
+        "prompt": "Show me details for Shop the RTX-5080."
+      },
+      {
+        "label": "Compare options",
+        "prompt": "What are alternatives to Shop the RTX-5080?"
+      }
+    ]
+  },
+  {
+    "id": "nvidia-rtx-5070",
+    "name": "Nvidia-RTX 5070",
+    "price": "",
+    "discount": "N/A",
+    "delivery": "",
+    "availability": "",
+    "category": "custom",
+    "theme": "dark",
+    "badge": "Nvidia-RTX 5070",
+    "thumbnailUrl": "images/nvidia-rtx-5070.jpg",
+    "productUrl": "https://www.coca-cola.com/gb/en",
+    "suggestions": [
+      {
+        "label": "Learn more",
+        "prompt": "Tell me more about Nvidia-RTX 5070."
+      },
+      {
+        "label": "Check price",
+        "prompt": "What is the price of Nvidia-RTX 5070?"
+      },
+      {
+        "label": "View details",
+        "prompt": "Show me details for Nvidia-RTX 5070."
+      },
+      {
+        "label": "Compare options",
+        "prompt": "What are alternatives to Nvidia-RTX 5070?"
+      }
+    ]
+  },
+  {
+    "id": "coca-cola-com",
+    "name": "coca-cola.com",
+    "price": "",
+    "discount": "N/A",
+    "delivery": "",
+    "availability": "",
+    "category": "custom",
+    "theme": "dark",
+    "badge": null,
+    "thumbnailUrl": "images/coca-cola-com.jpg",
+    "productUrl": "https://www.coca-cola.com/gb/en",
+    "suggestions": [
+      {
+        "label": "Learn more",
+        "prompt": "Tell me more about coca-cola.com."
+      },
+      {
+        "label": "Check price",
+        "prompt": "What is the price of coca-cola.com?"
+      },
+      {
+        "label": "View details",
+        "prompt": "Show me details for coca-cola.com."
+      },
+      {
+        "label": "Compare options",
+        "prompt": "What are alternatives to coca-cola.com?"
+      }
+    ]
+  },
+  {
     "id": "quench-your-thirst",
     "name": "Quench Your Thirst",
     "price": "",

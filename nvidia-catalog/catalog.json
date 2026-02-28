@@ -42,7 +42,7 @@
           "price": 609.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-prime-geforce-rtx-5070-12gb-resident-evil-requiem-game-bundle/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-prime-geforce-rtx-5070-12gb-resident-evil-requiem-game-bundle/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0M11-MVAA00",
           "partnerId": "111"
@@ -53,7 +53,7 @@
           "price": 669.99,
           "purchaseLink": "https://api.bestbuy.com/click/-/6614787/pdp",
           "directPurchaseLink": null,
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0M11-MVAA00",
           "partnerId": "2"
@@ -64,7 +64,7 @@
           "price": 669.99,
           "purchaseLink": "https://www.newegg.com/asus-prime-rtx5070-12g-nvidia-geforce-rtx-5070-12gb-gddr7/p/N82E16814126761?item=N82E16814126761",
           "directPurchaseLink": null,
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0M11-MVAA00",
           "partnerId": "3"
@@ -106,7 +106,7 @@
           "price": 1899.99,
           "purchaseLink": "https://api.bestbuy.com/click/-/6613334/pdp",
           "directPurchaseLink": "https://api.bestbuy.com/click/-/6613334/pdp",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0LV0-MVAA00",
           "partnerId": "2"
@@ -117,7 +117,7 @@
           "price": 1899.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-rog-astral-geforce-rtx-5080-16-gb-oc-edition-resident-evil-requiem-game-bundle/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-rog-astral-geforce-rtx-5080-16-gb-oc-edition-resident-evil-requiem-game-bundle/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0LV0-MVAA00",
           "partnerId": "111"
@@ -160,7 +160,7 @@
           "price": 299.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-dual-geforce-rtx-5060-8gb-gddr7-oc-edition/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-dual-geforce-rtx-5060-8gb-gddr7-oc-edition/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0N12-MVAA00",
           "partnerId": "111"
@@ -171,7 +171,7 @@
           "price": 369.99,
           "purchaseLink": "https://api.bestbuy.com/click/-/6632993/pdp",
           "directPurchaseLink": "https://api.bestbuy.com/click/-/6632993/pdp",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0N12-MVAA00",
           "partnerId": "2"
@@ -182,7 +182,7 @@
           "price": 369.99,
           "purchaseLink": "https://www.newegg.com/asus-dual-rtx5060-o8g-nvidia-geforce-rtx-5060-8gb-gddr7/p/N82E16814126807?item=N82E16814126807",
           "directPurchaseLink": "https://www.newegg.com/asus-dual-rtx5060-o8g-nvidia-geforce-rtx-5060-8gb-gddr7/p/N82E16814126807?item=N82E16814126807",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0N12-MVAA00",
           "partnerId": "3"
@@ -224,7 +224,7 @@
           "price": 1499.99,
           "purchaseLink": "https://api.bestbuy.com/click/-/6613335/pdp",
           "directPurchaseLink": "https://api.bestbuy.com/click/-/6613335/pdp",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0LX0-MVAA00",
           "partnerId": "2"
@@ -235,7 +235,7 @@
           "price": 1499.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-prime-geforce-rtx-5080-16gb-oc-edition-resident-evil-requiem-game-bundle/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-prime-geforce-rtx-5080-16gb-oc-edition-resident-evil-requiem-game-bundle/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0LX0-MVAA00",
           "partnerId": "111"
@@ -277,7 +277,7 @@
           "price": 1599.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-rog-strix-geforce-rtx-5070-ti-16-gb-oc-edition-resident-evil-requiem-game-bundle/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-rog-strix-geforce-rtx-5070-ti-16-gb-oc-edition-resident-evil-requiem-game-bundle/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0M90-MVAA00",
           "partnerId": "111"
@@ -320,7 +320,7 @@
           "price": 569.99,
           "purchaseLink": "https://www.amazon.com/dp/B0FFKWFMYM?tag=geforcom-20&linkCode=osi&th=1&psc=1",
           "directPurchaseLink": "https://www.amazon.com/dp/B0FFKWFMYM?tag=geforcom-20&linkCode=osi&th=1&psc=1",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "N82E16814126813",
           "partnerId": "1"
@@ -331,7 +331,7 @@
           "price": 709.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-prime-geforce-rtx-5070-12-gb-white-oc-edition-resident-evil-requiem-game-bundle/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-prime-geforce-rtx-5070-12-gb-white-oc-edition-resident-evil-requiem-game-bundle/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "N82E16814126813",
           "partnerId": "111"
@@ -373,7 +373,7 @@
           "price": 999.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-tuf-gaming-geforce-rtx-5070-ti-16gb-oc-edition/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-tuf-gaming-geforce-rtx-5070-ti-16gb-oc-edition/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0MD0-MVAA00",
           "partnerId": "111"
@@ -415,7 +415,7 @@
           "price": 1699.99,
           "purchaseLink": "https://api.bestbuy.com/click/-/6613333/pdp",
           "directPurchaseLink": null,
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0M30-MVAA00",
           "partnerId": "2"
@@ -426,7 +426,7 @@
           "price": 1699.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-tuf-gaming-geforce-rtx-5080-16gb-oc-edition-resident-evil-requiem-game-bundle/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-tuf-gaming-geforce-rtx-5080-16gb-oc-edition-resident-evil-requiem-game-bundle/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0M30-MVAA00",
           "partnerId": "111"
@@ -469,7 +469,7 @@
           "price": 669.99,
           "purchaseLink": "https://api.bestbuy.com/click/-/6634560/pdp",
           "directPurchaseLink": "https://api.bestbuy.com/click/-/6634560/pdp",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5070-12I3C",
           "partnerId": "2"
@@ -480,7 +480,7 @@
           "price": 669.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5070-12g-inspire-3x-oc-resident-evil-requiem-game-bundle/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5070-12g-inspire-3x-oc-resident-evil-requiem-game-bundle/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5070-12I3C",
           "partnerId": "111"
@@ -523,7 +523,7 @@
           "price": 829.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-rog-strix-geforce-rtx-5070-12-gb-oc-edition-resident-evil-requiem-game-bundle/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-rog-strix-geforce-rtx-5070-12-gb-oc-edition-resident-evil-requiem-game-bundle/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0M80-MVAA00",
           "partnerId": "111"
@@ -565,7 +565,7 @@
           "price": 549,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5070-founders-edition/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5070-founders-edition/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "NVGFT570",
           "partnerId": "111"
@@ -607,7 +607,7 @@
           "price": 999,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5080-founders-edition/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5080-founders-edition/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "NVGFT580",
           "partnerId": "111"
@@ -660,7 +660,7 @@
           "price": 1999,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5090-founders-edition/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/geforce-rtx-5090-founders-edition/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "NVGFT590",
           "partnerId": "111"
@@ -714,7 +714,7 @@
           "price": 589.99,
           "purchaseLink": "https://api.bestbuy.com/click/-/6628262/pdp",
           "directPurchaseLink": null,
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0MH3-MVAA00",
           "partnerId": "2"
@@ -725,7 +725,7 @@
           "price": 589.99,
           "purchaseLink": "https://www.newegg.com/asus-prime-rtx5060ti-16g-nvidia-geforce-rtx-5060-ti-16gb-gddr7/p/N82E16814126791?item=N82E16814126791",
           "directPurchaseLink": null,
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0MH3-MVAA00",
           "partnerId": "3"
@@ -736,7 +736,7 @@
           "price": 589.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-prime-geforce-rtx-5060-ti-16gb/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-prime-geforce-rtx-5060-ti-16gb/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0MH3-MVAA00",
           "partnerId": "111"
@@ -778,7 +778,7 @@
           "price": 639.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5070-12g-ventus-2x-oc-white-resident-evil-requiem-game-bundle/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5070-12g-ventus-2x-oc-white-resident-evil-requiem-game-bundle/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5070-12V2CW",
           "partnerId": "111"
@@ -821,7 +821,7 @@
           "price": 399.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5060-8g-gaming-oc/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5060-8g-gaming-oc/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5060-8GC",
           "partnerId": "111"
@@ -832,7 +832,7 @@
           "price": 429.99,
           "purchaseLink": "https://www.newegg.com/msi-rtx-5060-8g-gaming-oc-nvidia-geforce-rtx-5060-8gb-gddr7/p/N82E16814137971?item=N82E16814137971",
           "directPurchaseLink": null,
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5060-8GC",
           "partnerId": "3"
@@ -874,7 +874,7 @@
           "price": 294.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5050-8g-ventus-2x-oc/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5050-8g-ventus-2x-oc/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5050-8V2C",
           "partnerId": "111"
@@ -885,7 +885,7 @@
           "price": 304.99,
           "purchaseLink": "https://api.bestbuy.com/click/-/6638591/pdp",
           "directPurchaseLink": null,
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5050-8V2C",
           "partnerId": "2"
@@ -896,7 +896,7 @@
           "price": 304.99,
           "purchaseLink": "https://www.newegg.com/msi-rtx-5050-8g-ventus-2x-oc-geforce-rtx-5050-8gb-graphics-card-double-fans/p/N82E16814137981?item=N82E16814137981",
           "directPurchaseLink": null,
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5050-8V2C",
           "partnerId": "3"
@@ -938,7 +938,7 @@
           "price": 639.99,
           "purchaseLink": "https://api.bestbuy.com/click/-/6634557/pdp",
           "directPurchaseLink": null,
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G507012V3C",
           "partnerId": "2"
@@ -949,7 +949,7 @@
           "price": 639.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5070-12g-ventus-3x-oc-resident-evil-requiem-game-bundle/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5070-12g-ventus-3x-oc-resident-evil-requiem-game-bundle/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G507012V3C",
           "partnerId": "111"
@@ -991,7 +991,7 @@
           "price": 1169.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-tuf-gaming-geforce-rtx-5070-ti-16gb-white-oc-edition-resident-evil-requiem-game-bundle/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-tuf-gaming-geforce-rtx-5070-ti-16gb-white-oc-edition-resident-evil-requiem-game-bundle/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0MD3-M0AA00",
           "partnerId": "111"
@@ -1033,7 +1033,7 @@
           "price": 369.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5060-8g-shadow-2x/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5060-8g-shadow-2x/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5060-8S2",
           "partnerId": "111"
@@ -1075,7 +1075,7 @@
           "price": 399.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5060-ti-8g-shadow-2x-plus/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5060-ti-8g-shadow-2x-plus/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G506T-8S2P",
           "partnerId": "111"
@@ -1117,7 +1117,7 @@
           "price": 569.99,
           "purchaseLink": "https://api.bestbuy.com/click/-/6672757/pdp",
           "directPurchaseLink": "https://api.bestbuy.com/click/-/6672757/pdp",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G506T-16S2CP",
           "partnerId": "2"
@@ -1128,7 +1128,7 @@
           "price": 569.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-shadow-geforce-rtx-5060-ti-16gb-gddr7-pci-express-5-0-graphics-card-rtx-5060-ti-16g-shadow-2x-oc-plus/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-shadow-geforce-rtx-5060-ti-16gb-gddr7-pci-express-5-0-graphics-card-rtx-5060-ti-16g-shadow-2x-oc-plus/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G506T-16S2CP",
           "partnerId": "111"
@@ -1167,7 +1167,7 @@
           "price": 799.99,
           "purchaseLink": "https://api.bestbuy.com/click/-/6614741/pdp",
           "directPurchaseLink": null,
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0LZ0-MVAA00",
           "partnerId": "2"
@@ -1178,7 +1178,7 @@
           "price": 799.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-tuf-gaming-geforce-rtx-5070-12gb-oc-edition-resident-evil-requiem-game-bundle/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-tuf-gaming-geforce-rtx-5070-12gb-oc-edition-resident-evil-requiem-game-bundle/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0LZ0-MVAA00",
           "partnerId": "111"
@@ -1220,7 +1220,7 @@
           "price": 1009.99,
           "purchaseLink": "https://api.bestbuy.com/click/-/6614742/pdp",
           "directPurchaseLink": "https://api.bestbuy.com/click/-/6614742/pdp",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0MF0-MVAA00",
           "partnerId": "2"
@@ -1231,7 +1231,7 @@
           "price": 1009.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-prime-geforce-rtx-5070-ti-16gb-oc-edition-resident-evil-requiem-game-bundle/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/asus-prime-geforce-rtx-5070-ti-16gb-oc-edition-resident-evil-requiem-game-bundle/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "90YV0MF0-MVAA00",
           "partnerId": "111"
@@ -1254,7 +1254,7 @@
       "lowestRetailPrice": 549.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -1273,7 +1273,7 @@
           "purchaseLink": "https://api.bestbuy.com/click/-/6629367/pdp",
           "directPurchaseLink": "https://api.bestbuy.com/click/-/6629367/pdp",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 19,
           "sku": "N82E16814932787",
           "partnerId": "2"
         },
@@ -1284,7 +1284,7 @@
           "purchaseLink": "https://www.newegg.com/gigabyte-gv-n506tgaming-oc-16gd-nvidia-geforce-rtx-5060-ti-16gb-gddr7/p/N82E16814932787",
           "directPurchaseLink": null,
           "isAvailable": true,
-          "stock": 0,
+          "stock": 8,
           "sku": "N82E16814932787",
           "partnerId": "3"
         }
@@ -1325,7 +1325,7 @@
           "price": 644.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5070-12g-gaming-trio-oc-resident-evil-requiem-game-bundle/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5070-12g-gaming-trio-oc-resident-evil-requiem-game-bundle/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5070-12GTC",
           "partnerId": "111"
@@ -1336,7 +1336,7 @@
           "price": 679.99,
           "purchaseLink": "https://api.bestbuy.com/click/-/6619436/pdp",
           "directPurchaseLink": null,
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5070-12GTC",
           "partnerId": "2"
@@ -1378,7 +1378,7 @@
           "price": 289.99,
           "purchaseLink": "https://api.bestbuy.com/click/-/6638594/pdp",
           "directPurchaseLink": null,
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5050-8S2C",
           "partnerId": "2"
@@ -1389,7 +1389,7 @@
           "price": 299.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5050-8g-shadow-2x-oc/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5050-8g-shadow-2x-oc/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5050-8S2C",
           "partnerId": "111"
@@ -1412,7 +1412,7 @@
       "lowestRetailPrice": 1699.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -1432,7 +1432,7 @@
           "purchaseLink": "https://www.microcenter.com/product/690452/gigabyte-nvidia-geforce-rtx-5080-aorus-xtreme-waterforce-liquid-cooled-16gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/690452/gigabyte-nvidia-geforce-rtx-5080-aorus-xtreme-waterforce-liquid-cooled-16gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 40,
           "sku": "805382",
           "partnerId": "126"
         }
@@ -1454,7 +1454,7 @@
       "lowestRetailPrice": 2999.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -1474,7 +1474,7 @@
           "purchaseLink": "https://www.microcenter.com/product/690450/gigabyte-nvidia-geforce-rtx-5090-windforce-overclocked-triple-fan-32gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/690450/gigabyte-nvidia-geforce-rtx-5090-windforce-overclocked-triple-fan-32gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 36,
           "sku": "805564",
           "partnerId": "126"
         }
@@ -1512,7 +1512,7 @@
           "price": 324.99,
           "purchaseLink": "https://api.bestbuy.com/click/-/6638592/pdp",
           "directPurchaseLink": "https://api.bestbuy.com/click/-/6638592/pdp",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5050-8GC",
           "partnerId": "2"
@@ -1523,7 +1523,7 @@
           "price": 324.99,
           "purchaseLink": "https://www.newegg.com/msi-rtx-5060-8g-gaming-oc-geforce-rtx-5060-8gb-graphics-card-double-fans/p/N82E16814137980?item=N82E16814137980",
           "directPurchaseLink": "https://www.newegg.com/msi-rtx-5060-8g-gaming-oc-geforce-rtx-5060-8gb-graphics-card-double-fans/p/N82E16814137980?item=N82E16814137980",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5050-8GC",
           "partnerId": "3"
@@ -1534,7 +1534,7 @@
           "price": 324.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5050-8g-gaming-oc/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5050-8g-gaming-oc/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5050-8GC",
           "partnerId": "111"
@@ -1577,7 +1577,7 @@
           "price": 359.99,
           "purchaseLink": "https://api.bestbuy.com/click/-/6632722/pdp",
           "directPurchaseLink": "https://api.bestbuy.com/click/-/6632722/pdp",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5060-8I2C",
           "partnerId": "2"
@@ -1588,7 +1588,7 @@
           "price": 359.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5060-8g-inspire-2x-oc/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5060-8g-inspire-2x-oc/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5060-8I2C",
           "partnerId": "111"
@@ -1631,7 +1631,7 @@
           "price": 359.99,
           "purchaseLink": "https://api.bestbuy.com/click/-/6632720/pdp",
           "directPurchaseLink": "https://api.bestbuy.com/click/-/6632720/pdp",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5060-8S2C",
           "partnerId": "2"
@@ -1642,7 +1642,7 @@
           "price": 369.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-shadow-geforce-rtx-5060-8gb-gddr7-pci-express-5-0-x-16-use-x8-graphics-card-rtx-5060-8g-shadow-2x-oc/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-shadow-geforce-rtx-5060-8gb-gddr7-pci-express-5-0-x-16-use-x8-graphics-card-rtx-5060-8g-shadow-2x-oc/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5060-8S2C",
           "partnerId": "111"
@@ -1681,7 +1681,7 @@
           "price": 429.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5060-ti-8g-ventus-3x-oc/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5060-ti-8g-ventus-3x-oc/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G506T-8V3C",
           "partnerId": "111"
@@ -1723,7 +1723,7 @@
           "price": 639.99,
           "purchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5070-12g-ventus-3x-resident-evil-requiem-game-bundle/",
           "directPurchaseLink": "https://marketplace.nvidia.com/en-us/consumer/graphics-cards/msi-geforce-rtx-5070-12g-ventus-3x-resident-evil-requiem-game-bundle/",
-          "isAvailable": true,
+          "isAvailable": false,
           "stock": 0,
           "sku": "G5070-12V3",
           "partnerId": "111"
@@ -1746,7 +1746,7 @@
       "lowestRetailPrice": 1399.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": true,
@@ -1766,7 +1766,7 @@
           "purchaseLink": "https://www.microcenter.com/product/690477/gigabyte-nvidia-geforce-rtx-5080-windforce-sff-overclocked-triple-fan-16gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/690477/gigabyte-nvidia-geforce-rtx-5080-windforce-sff-overclocked-triple-fan-16gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 33,
           "sku": "805440",
           "partnerId": "126"
         }
@@ -1788,7 +1788,7 @@
       "lowestRetailPrice": 319.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -1808,7 +1808,7 @@
           "purchaseLink": "https://www.bestbuy.com/site/gigabyte-nvidia-geforce-rtx-4060-gaming-oc-8gb-gddr6-pci-express-4-0-graphics-card-black/6548537.p?skuId=6548537",
           "directPurchaseLink": null,
           "isAvailable": true,
-          "stock": 0,
+          "stock": 22,
           "sku": "GV-N4060GAMING-OC-8GD",
           "partnerId": "2"
         },
@@ -1819,7 +1819,7 @@
           "purchaseLink": "https://www.newegg.com/p/14-932-628",
           "directPurchaseLink": null,
           "isAvailable": true,
-          "stock": 0,
+          "stock": 18,
           "sku": "GV-N4060GAMING-OC-8GD",
           "partnerId": "3"
         },
@@ -1830,7 +1830,7 @@
           "purchaseLink": "https://www.microcenter.com/search/search_results.aspx?N=&cat=&Ntt=590737",
           "directPurchaseLink": null,
           "isAvailable": true,
-          "stock": 0,
+          "stock": 74,
           "sku": "GV-N4060GAMING-OC-8GD",
           "partnerId": "126"
         }
@@ -1852,7 +1852,7 @@
       "lowestRetailPrice": 339.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -1872,7 +1872,7 @@
           "purchaseLink": "https://www.microcenter.com/product/668494/gigabyte-geforce-rtx-3060-windforce-oc-overclocked-dual-fan-12gb-gddr6-pcie-40-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/668494/gigabyte-geforce-rtx-3060-windforce-oc-overclocked-dual-fan-12gb-gddr6-pcie-40-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 16,
           "sku": "594697",
           "partnerId": "126"
         }
@@ -1894,7 +1894,7 @@
       "lowestRetailPrice": 369.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -1914,7 +1914,7 @@
           "purchaseLink": "https://www.newegg.com/zotac-rtx-5060-amp-nvidia-geforce-rtx-5060-8gb-gddr7/p/N82E16814500620?item=N82E16814500620",
           "directPurchaseLink": "https://www.newegg.com/zotac-rtx-5060-amp-nvidia-geforce-rtx-5060-8gb-gddr7/p/N82E16814500620?item=N82E16814500620",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 59,
           "sku": "ZT-B50600F-10M",
           "partnerId": "3"
         }
@@ -1936,7 +1936,7 @@
       "lowestRetailPrice": 389.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -1956,7 +1956,7 @@
           "purchaseLink": "https://api.bestbuy.com/click/-/6632193/pdp",
           "directPurchaseLink": "https://api.bestbuy.com/click/-/6632193/pdp",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 9,
           "sku": "PRIME-RTX5060-8G",
           "partnerId": "2"
         },
@@ -1967,7 +1967,7 @@
           "purchaseLink": "https://www.newegg.com/p/N82E16814126802?item=N82E16814126802",
           "directPurchaseLink": "https://www.newegg.com/p/N82E16814126802?item=N82E16814126802",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 8,
           "sku": "PRIME-RTX5060-8G",
           "partnerId": "3"
         }
@@ -1989,7 +1989,7 @@
       "lowestRetailPrice": 549.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2009,7 +2009,7 @@
           "purchaseLink": "https://www.microcenter.com/product/692304/gigabyte-nvidia-geforce-rtx-5070-windforce-sff-triple-fan-12gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/692304/gigabyte-nvidia-geforce-rtx-5070-windforce-sff-triple-fan-12gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 16,
           "sku": "826206",
           "partnerId": "126"
         }
@@ -2031,7 +2031,7 @@
       "lowestRetailPrice": 629.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2051,7 +2051,7 @@
           "purchaseLink": "https://www.microcenter.com/product/690478/pny-nvidia-geforce-rtx-5070-overclocked-triple-fan-12gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/690478/pny-nvidia-geforce-rtx-5070-overclocked-triple-fan-12gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 32,
           "sku": "805168",
           "partnerId": "126"
         }
@@ -2073,7 +2073,7 @@
       "lowestRetailPrice": 669.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2093,7 +2093,7 @@
           "purchaseLink": "https://www.microcenter.com/product/691195/asus-nvidia-geforce-rtx-5070-prime-triple-fan-12gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/691195/asus-nvidia-geforce-rtx-5070-prime-triple-fan-12gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 34,
           "sku": "813519",
           "partnerId": "126"
         }
@@ -2115,7 +2115,7 @@
       "lowestRetailPrice": 1199.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2135,7 +2135,7 @@
           "purchaseLink": "https://www.newegg.com/pny-argb-oc-vcg508016tfxxpb1-o-nvidia-geforce-rtx-5080-16gb-gddr7/p/N82E16814133898?Item=N82E16814133898&Tpk=N82E16814133898",
           "directPurchaseLink": null,
           "isAvailable": true,
-          "stock": 0,
+          "stock": 69,
           "sku": "VCG508016TFXXPB1-O",
           "partnerId": "3"
         }
@@ -2157,7 +2157,7 @@
       "lowestRetailPrice": 1269.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2177,7 +2177,7 @@
           "purchaseLink": "https://www.microcenter.com/product/690002/gigabyte-nvidia-geforce-rtx-5080-gaming-overclocked-triple-fan-16gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/690002/gigabyte-nvidia-geforce-rtx-5080-gaming-overclocked-triple-fan-16gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 8,
           "sku": "799817",
           "partnerId": "126"
         }
@@ -2199,7 +2199,7 @@
       "lowestRetailPrice": 1549.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2219,7 +2219,7 @@
           "purchaseLink": "https://www.microcenter.com/product/690455/gigabyte-nvidia-geforce-rtx-5080-aero-sff-overclocked-triple-fan-16gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/690455/gigabyte-nvidia-geforce-rtx-5080-aero-sff-overclocked-triple-fan-16gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 30,
           "sku": "805341",
           "partnerId": "126"
         }
@@ -2241,7 +2241,7 @@
       "lowestRetailPrice": 1629.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2261,7 +2261,7 @@
           "purchaseLink": "https://www.newegg.com/msi-rtx-5080-16g-vanguard-soc-launch-edition-nvidia-geforce-rtx-5080-16gb-gddr7/p/N82E16814137907?item=N82E16814137907",
           "directPurchaseLink": "https://www.newegg.com/msi-rtx-5080-16g-vanguard-soc-launch-edition-nvidia-geforce-rtx-5080-16gb-gddr7/p/N82E16814137907?item=N82E16814137907",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 74,
           "sku": "824142397800",
           "partnerId": "3"
         }
@@ -2283,7 +2283,7 @@
       "lowestRetailPrice": 1899.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2303,7 +2303,7 @@
           "purchaseLink": "https://www.microcenter.com/product/689735/asus-nvidia-geforce-rtx-5080-rog-astral-overclocked-triple-fan-16gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/689735/asus-nvidia-geforce-rtx-5080-rog-astral-overclocked-triple-fan-16gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 58,
           "sku": "793182",
           "partnerId": "126"
         }
@@ -2325,7 +2325,7 @@
       "lowestRetailPrice": null,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2355,7 +2355,7 @@
       "lowestRetailPrice": 1249.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": true,
       "isBestSeller": false,
@@ -2375,7 +2375,7 @@
           "purchaseLink": "https://www.newegg.com/gigabyte-gv-n5080aero-oc-16gd-nvidia-geforce-rtx-5080-16gb-gddr7/p/N82E16814932756?item=N82E16814932756",
           "directPurchaseLink": null,
           "isAvailable": true,
-          "stock": 0,
+          "stock": 33,
           "sku": "GV-N5080AERO OC-16GD",
           "partnerId": "3"
         }
@@ -2397,7 +2397,7 @@
       "lowestRetailPrice": 349.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2417,7 +2417,7 @@
           "purchaseLink": "https://www.newegg.com/gigabyte-windforce-gv-n5060wf2oc-8gd-nvidia-geforce-rtx-5060-8gb-gddr7/p/N82E16814932804?item=N82E16814932804",
           "directPurchaseLink": "https://www.newegg.com/gigabyte-windforce-gv-n5060wf2oc-8gd-nvidia-geforce-rtx-5060-8gb-gddr7/p/N82E16814932804?item=N82E16814932804",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 62,
           "sku": "N82E16814932804",
           "partnerId": "3"
         }
@@ -2439,7 +2439,7 @@
       "lowestRetailPrice": 359.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2459,7 +2459,7 @@
           "purchaseLink": "https://www.newegg.com/zotac-gaming-geforce-rtx-5060-twin-edge-oc-8gb-graphics-card-aircooled-with-heatsink-composite-heatpipes-fans/p/N82E16814500623?item=N82E16814500623",
           "directPurchaseLink": "https://www.newegg.com/zotac-gaming-geforce-rtx-5060-twin-edge-oc-8gb-graphics-card-aircooled-with-heatsink-composite-heatpipes-fans/p/N82E16814500623?item=N82E16814500623",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 40,
           "sku": "ZT-B50600H-10M",
           "partnerId": "3"
         }
@@ -2481,7 +2481,7 @@
       "lowestRetailPrice": 389.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2501,7 +2501,7 @@
           "purchaseLink": "https://www.microcenter.com/product/694756/msi-nvidia-geforce-rtx-5060-ventus-2x-white-overclocked-dual-fan-8gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": null,
           "isAvailable": true,
-          "stock": 0,
+          "stock": 5,
           "sku": "860718",
           "partnerId": "126"
         }
@@ -2523,7 +2523,7 @@
       "lowestRetailPrice": 429.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2544,7 +2544,7 @@
           "purchaseLink": "https://www.newegg.com/gigabyte-gv-n5060aero-oc-8gd-nvidia-geforce-rtx-5060-8gb-gddr7/p/N82E16814932799?item=N82E16814932799",
           "directPurchaseLink": "https://www.newegg.com/gigabyte-gv-n5060aero-oc-8gd-nvidia-geforce-rtx-5060-8gb-gddr7/p/N82E16814932799?item=N82E16814932799",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 25,
           "sku": "N82E16814932799",
           "partnerId": "3"
         }
@@ -2566,7 +2566,7 @@
       "lowestRetailPrice": 439.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2586,7 +2586,7 @@
           "purchaseLink": "https://api.bestbuy.com/click/-/6632191/pdp",
           "directPurchaseLink": "https://api.bestbuy.com/click/-/6632191/pdp",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 59,
           "sku": "PRIME-RTX5060-O8G",
           "partnerId": "2"
         },
@@ -2597,7 +2597,7 @@
           "purchaseLink": "https://www.newegg.com/asus-prime-rtx5060-o8g-nvidia-geforce-rtx-5060-8gb-gddr7/p/N82E16814126801?item=N82E16814126801",
           "directPurchaseLink": "https://www.newegg.com/asus-prime-rtx5060-o8g-nvidia-geforce-rtx-5060-8gb-gddr7/p/N82E16814126801?item=N82E16814126801",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 48,
           "sku": "PRIME-RTX5060-O8G",
           "partnerId": "3"
         }
@@ -2619,7 +2619,7 @@
       "lowestRetailPrice": 495.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2639,7 +2639,7 @@
           "purchaseLink": "https://www.newegg.com/asus-tuf-gaming-tuf-rtx5060-o8g-gaming-nvidia-geforce-rtx-5060-8gb-gddr7/p/N82E16814126800?item=N82E16814126800",
           "directPurchaseLink": "https://www.newegg.com/asus-tuf-gaming-tuf-rtx5060-o8g-gaming-nvidia-geforce-rtx-5060-8gb-gddr7/p/N82E16814126800?item=N82E16814126800",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 40,
           "sku": "TUF-RTX5060-O8G-GAMING",
           "partnerId": "3"
         }
@@ -2661,7 +2661,7 @@
       "lowestRetailPrice": 799.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2681,7 +2681,7 @@
           "purchaseLink": "https://www.microcenter.com/product/662012/gigabyte-nvidia-geforce-rtx-4070-ti-eagle-triple-fan-12gb-gddr6x-pcie-40-graphics-card",
           "directPurchaseLink": null,
           "isAvailable": true,
-          "stock": 0,
+          "stock": 24,
           "sku": "GV-N407TEAGLE-12GD",
           "partnerId": "126"
         }
@@ -2703,7 +2703,7 @@
       "lowestRetailPrice": 809.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2723,7 +2723,7 @@
           "purchaseLink": "https://bestbuy.7tiv.net/c/64065/614286/10014?u=https%3A%2F%2Fapi.bestbuy.com%2Fclick%2F-%2F6527971%2Fpdp",
           "directPurchaseLink": "https://bestbuy.7tiv.net/c/64065/614286/10014?u=https%3A%2F%2Fapi.bestbuy.com%2Fclick%2F-%2F6527971%2Fpdp",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 32,
           "sku": "GV-N407TEAGLE OC-12GD ",
           "partnerId": "2"
         },
@@ -2734,7 +2734,7 @@
           "purchaseLink": "https://www.microcenter.com/product/667898/gigabyte-nvidia-geforce-rtx-4070-ti-eagle-v2-overclocked-triple-fan-12gb-gddr6x-pcie-40-graphics-card",
           "directPurchaseLink": "https://www.microcenter.com/product/667898/gigabyte-nvidia-geforce-rtx-4070-ti-eagle-v2-overclocked-triple-fan-12gb-gddr6x-pcie-40-graphics-card",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 48,
           "sku": "GV-N407TEAGLE OC-12GD ",
           "partnerId": "126"
         }
@@ -2756,7 +2756,7 @@
       "lowestRetailPrice": 979.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2776,7 +2776,7 @@
           "purchaseLink": "https://www.microcenter.com/product/691225/gigabyte-nvidia-geforce-rtx-5070-ti-windforce-sff-overclocked-triple-fan-16gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/691225/gigabyte-nvidia-geforce-rtx-5070-ti-windforce-sff-overclocked-triple-fan-16gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 18,
           "sku": "813949",
           "partnerId": "126"
         }
@@ -2798,7 +2798,7 @@
       "lowestRetailPrice": 999.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2818,7 +2818,7 @@
           "purchaseLink": "https://www.newegg.com/gigabyte-windforce-gv-n5080wf3oc-16gd-nvidia-geforce-rtx-5080-16gb-gddr7/p/N82E16814932754?item=N82E16814932754",
           "directPurchaseLink": "https://www.newegg.com/gigabyte-windforce-gv-n5080wf3oc-16gd-nvidia-geforce-rtx-5080-16gb-gddr7/p/N82E16814932754?item=N82E16814932754",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 16,
           "sku": "GV-N5080WF3OC-16GD",
           "partnerId": "3"
         },
@@ -2829,7 +2829,7 @@
           "purchaseLink": "https://api.bestbuy.com/click/-/6616102/pdp",
           "directPurchaseLink": "https://api.bestbuy.com/click/-/6616102/pdp",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 53,
           "sku": "GV-N5080WF3OC-16GD",
           "partnerId": "2"
         }
@@ -2851,7 +2851,7 @@
       "lowestRetailPrice": 999.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2871,7 +2871,7 @@
           "purchaseLink": "https://www.microcenter.com/product/693841/zotac-nvidia-geforce-rtx-5070-ti-solid-sff-overclocked-triple-fan-16gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/693841/zotac-nvidia-geforce-rtx-5070-ti-solid-sff-overclocked-triple-fan-16gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 17,
           "sku": "844035",
           "partnerId": "126"
         }
@@ -2893,7 +2893,7 @@
       "lowestRetailPrice": 1199.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2913,7 +2913,7 @@
           "purchaseLink": "https://www.newegg.com/asus-rog-astral-rog-astral-rtx5090-o32g-gaming-nvidia-geforce-rtx-5090-32gb-gddr7/p/N82E16814932753?item=N82E16814932753",
           "directPurchaseLink": null,
           "isAvailable": true,
-          "stock": 0,
+          "stock": 50,
           "sku": "GV-N5080GAMING OC-16GD",
           "partnerId": "3"
         },
@@ -2924,7 +2924,7 @@
           "purchaseLink": "https://www.amazon.com/dp/B0DSQ1RCZV?tag=geforcom-20&linkCode=osi&th=1&psc=1",
           "directPurchaseLink": "https://www.amazon.com/dp/B0DSQ1RCZV?tag=geforcom-20&linkCode=osi&th=1&psc=1",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 49,
           "sku": "GV-N5080GAMING OC-16GD",
           "partnerId": "1"
         },
@@ -2935,7 +2935,7 @@
           "purchaseLink": "https://api.bestbuy.com/click/-/6615925/pdp",
           "directPurchaseLink": "https://api.bestbuy.com/click/-/6615925/pdp",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 38,
           "sku": "GV-N5080GAMING OC-16GD",
           "partnerId": "2"
         }
@@ -2957,7 +2957,7 @@
       "lowestRetailPrice": 1229.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -2978,7 +2978,7 @@
           "purchaseLink": "https://www.microcenter.com/product/690264/msi-nvidia-geforce-rtx-5080-gaming-trio-overclocked-triple-fan-16gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/690264/msi-nvidia-geforce-rtx-5080-gaming-trio-overclocked-triple-fan-16gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 10,
           "sku": "824142395721",
           "partnerId": "126"
         },
@@ -2989,7 +2989,7 @@
           "purchaseLink": "https://api.bestbuy.com/click/-/6615227/pdp",
           "directPurchaseLink": "https://api.bestbuy.com/click/-/6615227/pdp",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 63,
           "sku": "824142395721",
           "partnerId": "2"
         }
@@ -3011,7 +3011,7 @@
       "lowestRetailPrice": 1299.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3030,7 +3030,7 @@
           "purchaseLink": "https://www.newegg.com/gigabyte-gv-n5080aorus-m-16gd-nvidia-geforce-rtx-5080-16gb-gddr7/p/N82E16814932755?item=N82E16814932755",
           "directPurchaseLink": null,
           "isAvailable": true,
-          "stock": 0,
+          "stock": 73,
           "sku": "GV-N5080AORUS M-16GD",
           "partnerId": "3"
         }
@@ -3052,7 +3052,7 @@
       "lowestRetailPrice": 1381.74,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3072,7 +3072,7 @@
           "purchaseLink": "https://www.amazon.com/dp/B0DTZ48TCY?tag=geforcom-20&linkCode=osi&th=1&psc=1",
           "directPurchaseLink": "https://www.amazon.com/dp/B0DTZ48TCY?tag=geforcom-20&linkCode=osi&th=1&psc=1",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 20,
           "sku": "ZT-B50800J-10P",
           "partnerId": "1"
         }
@@ -3094,7 +3094,7 @@
       "lowestRetailPrice": 1399.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3114,7 +3114,7 @@
           "purchaseLink": "https://www.newegg.com/msi-rtx-5080-16g-ventus-3x-oc-nvidia-geforce-rtx-5080-16gb-gddr7/p/N82E16814137930?item=N82E16814137930",
           "directPurchaseLink": "https://www.newegg.com/msi-rtx-5080-16g-ventus-3x-oc-nvidia-geforce-rtx-5080-16gb-gddr7/p/N82E16814137930?item=N82E16814137930",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 53,
           "sku": "N82E16814137930",
           "partnerId": "3"
         }
@@ -3136,7 +3136,7 @@
       "lowestRetailPrice": 1418.72,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3156,7 +3156,7 @@
           "purchaseLink": "https://www.amazon.com/dp/B0DTJFZ4YS?tag=geforcom-20&linkCode=osi&th=1&psc=1",
           "directPurchaseLink": "https://www.amazon.com/dp/B0DTJFZ4YS?tag=geforcom-20&linkCode=osi&th=1&psc=1",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 15,
           "sku": "VCG508016TFXPB1-0",
           "partnerId": "1"
         }
@@ -3178,7 +3178,7 @@
       "lowestRetailPrice": 1469.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3198,7 +3198,7 @@
           "purchaseLink": "https://www.newegg.com/asus-prime-rtx5080-16g-nvidia-geforce-rtx-5080-16gb-gddr7/p/N82E16814126776?item=N82E16814126776",
           "directPurchaseLink": "https://www.newegg.com/asus-prime-rtx5080-16g-nvidia-geforce-rtx-5080-16gb-gddr7/p/N82E16814126776?item=N82E16814126776",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 75,
           "sku": "N82E16814126776",
           "partnerId": "3"
         }
@@ -3220,7 +3220,7 @@
       "lowestRetailPrice": 1499.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3240,7 +3240,7 @@
           "purchaseLink": "https://www.newegg.com/pny-argb-oc-vcg508016tfxxpb1-o-nvidia-geforce-rtx-5080-16gb-gddr7/p/N82E16814133898?item=N82E16814133898",
           "directPurchaseLink": "https://www.newegg.com/pny-argb-oc-vcg508016tfxxpb1-o-nvidia-geforce-rtx-5080-16gb-gddr7/p/N82E16814133898?item=N82E16814133898",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 42,
           "sku": "751492794242",
           "partnerId": "3"
         }
@@ -3262,7 +3262,7 @@
       "lowestRetailPrice": 1559.94,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3282,7 +3282,7 @@
           "purchaseLink": "https://www.amazon.com/dp/B0DSWP51N3?tag=geforcom-20&linkCode=osi&th=1&psc=1",
           "directPurchaseLink": "https://www.amazon.com/dp/B0DSWP51N3?tag=geforcom-20&linkCode=osi&th=1&psc=1",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 51,
           "sku": "824142395776",
           "partnerId": "1"
         }
@@ -3304,7 +3304,7 @@
       "lowestRetailPrice": 2549.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3324,7 +3324,7 @@
           "purchaseLink": "https://www.newegg.com/zotac-rtx-5090-solid-oc-nvidia-geforce-rtx-5090-32gb-gddr7/p/N82E16814500598?srsltid=AfmBOoo1LvQyEgI7fCC296PuF_1HhwmC7OWAMM8bi7y8WLzva5K1DFRy",
           "directPurchaseLink": null,
           "isAvailable": true,
-          "stock": 0,
+          "stock": 29,
           "sku": "ZT-B50900J-10P",
           "partnerId": "3"
         }
@@ -3346,7 +3346,7 @@
       "lowestRetailPrice": 2599.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3363,7 +3363,7 @@
           "purchaseLink": "https://www.amazon.com/dp/B0DT9YQR11?tag=geforcom-20&linkCode=osi&th=1&psc=1",
           "directPurchaseLink": "https://www.amazon.com/dp/B0DT9YQR11?tag=geforcom-20&linkCode=osi&th=1&psc=1",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 13,
           "sku": "GV-N5090AORUS M-32GD",
           "partnerId": "1"
         }
@@ -3385,7 +3385,7 @@
       "lowestRetailPrice": 2599.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3405,7 +3405,7 @@
           "purchaseLink": "https://www.amazon.com/dp/B0DT9WQW4T?tag=geforcom-20&linkCode=osi&th=1&psc=1",
           "directPurchaseLink": "https://www.amazon.com/dp/B0DT9WQW4T?tag=geforcom-20&linkCode=osi&th=1&psc=1",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 10,
           "sku": "GV-N5090GAMING OC-32GD",
           "partnerId": "1"
         }
@@ -3427,7 +3427,7 @@
       "lowestRetailPrice": 2799.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3447,7 +3447,7 @@
           "purchaseLink": "https://www.newegg.com/msi-rtx-5090-32g-vanguard-soc-launch-edition-nvidia-geforce-rtx-5090-32gb-gddr7/p/N82E16814137917?Item=N82E16814137917&Tpk=N82E16814137917",
           "directPurchaseLink": null,
           "isAvailable": true,
-          "stock": 0,
+          "stock": 34,
           "sku": "G5090-32VGSL",
           "partnerId": "3"
         }
@@ -3469,7 +3469,7 @@
       "lowestRetailPrice": 2930.75,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3489,7 +3489,7 @@
           "purchaseLink": "https://www.amazon.com/dp/B0DT7KGND2?tag=geforcom-20&linkCode=osi&th=1&psc=1",
           "directPurchaseLink": "https://www.amazon.com/dp/B0DT7KGND2?tag=geforcom-20&linkCode=osi&th=1&psc=1",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 42,
           "sku": "G5090-32VGS",
           "partnerId": "1"
         }
@@ -3511,7 +3511,7 @@
       "lowestRetailPrice": null,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3541,7 +3541,7 @@
       "lowestRetailPrice": 3509.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3561,7 +3561,7 @@
           "purchaseLink": "https://www.microcenter.com/product/690032/asus-nvidia-geforce-rtx-5090-rog-astral-overclocked-triple-fan-32gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/690032/asus-nvidia-geforce-rtx-5090-rog-astral-overclocked-triple-fan-32gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 15,
           "sku": "800060",
           "partnerId": "126"
         }
@@ -3583,7 +3583,7 @@
       "lowestRetailPrice": 3869.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3603,7 +3603,7 @@
           "purchaseLink": "https://www.microcenter.com/product/690499/asus-nvidia-geforce-rtx-5090-astral-lc-liquid-cooled-32gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/690499/asus-nvidia-geforce-rtx-5090-astral-lc-liquid-cooled-32gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 34,
           "sku": "805572",
           "partnerId": "126"
         }
@@ -3625,7 +3625,7 @@
       "lowestRetailPrice": 3899.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3646,7 +3646,7 @@
           "purchaseLink": "https://www.newegg.com/gigabyte-gv-n5090aorusm-ice-32gd-nvidia-geforce-rtx-5090-32gb-gddr7/p/N82E16814932765?item=N82E16814932765",
           "directPurchaseLink": "https://www.newegg.com/gigabyte-gv-n5090aorusm-ice-32gd-nvidia-geforce-rtx-5090-32gb-gddr7/p/N82E16814932765?item=N82E16814932765",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 17,
           "sku": "N82E16814932765",
           "partnerId": "3"
         }
@@ -3668,7 +3668,7 @@
       "lowestRetailPrice": 659.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3688,7 +3688,7 @@
           "purchaseLink": "https://www.microcenter.com/product/692300/msi-nvidia-geforce-rtx-5070-shadow-3x-overclocked-triple-fan-12gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/692300/msi-nvidia-geforce-rtx-5070-shadow-3x-overclocked-triple-fan-12gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 53,
           "sku": "826164",
           "partnerId": "126"
         }
@@ -3710,7 +3710,7 @@
       "lowestRetailPrice": 659.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3730,7 +3730,7 @@
           "purchaseLink": "https://www.microcenter.com/product/692302/msi-nvidia-geforce-rtx-5070-ventus-2x-overclocked-dual-fan-12gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/692302/msi-nvidia-geforce-rtx-5070-ventus-2x-overclocked-dual-fan-12gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 40,
           "sku": "826156",
           "partnerId": "126"
         }
@@ -3752,7 +3752,7 @@
       "lowestRetailPrice": 659.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3772,7 +3772,7 @@
           "purchaseLink": "https://www.microcenter.com/product/692299/msi-nvidia-geforce-rtx-5070-ventus-3x-overclocked-triple-fan-12gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/692299/msi-nvidia-geforce-rtx-5070-ventus-3x-overclocked-triple-fan-12gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 63,
           "sku": "826131",
           "partnerId": "126"
         }
@@ -3794,7 +3794,7 @@
       "lowestRetailPrice": 349.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3814,7 +3814,7 @@
           "purchaseLink": "https://www.microcenter.com/product/697104/pny-nvidia-geforce-rtx-5060-argb-epic-x-overclocked-triple-fan-8gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/697104/pny-nvidia-geforce-rtx-5060-argb-epic-x-overclocked-triple-fan-8gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 51,
           "sku": "884056",
           "partnerId": "126"
         }
@@ -3836,7 +3836,7 @@
       "lowestRetailPrice": 349.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3856,7 +3856,7 @@
           "purchaseLink": "https://www.microcenter.com/product/694813/pny-nvidia-geforce-rtx-5060-ti-epic-x-rgb-overclocked-triple-fan-8gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/694813/pny-nvidia-geforce-rtx-5060-ti-epic-x-rgb-overclocked-triple-fan-8gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 25,
           "sku": "855205",
           "partnerId": "126"
         }
@@ -3878,7 +3878,7 @@
       "lowestRetailPrice": 359.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3898,7 +3898,7 @@
           "purchaseLink": "https://www.microcenter.com/product/695967/gigabyte-nvidia-geforce-rtx-5060-gaming-overclocked-triple-fan-8gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/695967/gigabyte-nvidia-geforce-rtx-5060-gaming-overclocked-triple-fan-8gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 52,
           "sku": "869677",
           "partnerId": "126"
         }
@@ -3920,7 +3920,7 @@
       "lowestRetailPrice": 429.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3940,7 +3940,7 @@
           "purchaseLink": "https://www.microcenter.com/product/694814/pny-nvidia-geforce-rtx-5060-ti-overclocked-dual-fan-8gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/694814/pny-nvidia-geforce-rtx-5060-ti-overclocked-dual-fan-8gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 50,
           "sku": "856013",
           "partnerId": "126"
         }
@@ -3962,7 +3962,7 @@
       "lowestRetailPrice": 579.99,
       "currency": "USD",
       "availability": "buy_now",
-      "isAvailable": false,
+      "isAvailable": true,
       "isFounderEdition": false,
       "isFeatured": false,
       "isBestSeller": false,
@@ -3982,7 +3982,7 @@
           "purchaseLink": "https://www.microcenter.com/product/692303/msi-nvidia-geforce-rtx-5070-shadow-2x-overclocked-dual-fan-12gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "directPurchaseLink": "https://www.microcenter.com/product/692303/msi-nvidia-geforce-rtx-5070-shadow-2x-overclocked-dual-fan-12gb-gddr7-pcie-50-graphics-card_nvidiafeed",
           "isAvailable": true,
-          "stock": 0,
+          "stock": 31,
           "sku": "826172",
           "partnerId": "126"
         }

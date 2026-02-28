@@ -258,6 +258,14 @@
   animation: adgentPulse 1.2s ease-in-out infinite;
 }
 
+/* Follow-up "Checking…" pulse — sits below the previous response */
+.adgent-loading--checking {
+  font-size: 11px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--adgent-gold-dim);
+}
+
 @keyframes adgentPulse {
   0%, 100% { opacity: 0.5; }
   50%       { opacity: 1; }

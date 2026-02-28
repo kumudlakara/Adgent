@@ -1,10 +1,61 @@
+// ---------------------------------------------------------------------------
+// Supported sites — pattern to detect the site, selectors to find feed posts
+// ---------------------------------------------------------------------------
+const SUPPORTED_SITES = {
+  reddit: {
+    pattern: /(^|\.)reddit\.com$/,
+    selectors: ['[data-testid="post-container"]', "shreddit-post", '[id^="t3_"]'],
+    interval: 12,
+  },
+  techcrunch: {
+    pattern: /(^|\.)techcrunch\.com$/,
+    // TechCrunch uses WordPress block editor — each post is an <li> in a <ul.wp-block-post-template>
+    selectors: [".wp-block-post-template > li", ".loop-card", "article"],
+    interval: 4,
+  },
+  hackernews: {
+    pattern: /^news\.ycombinator\.com$/,
+    selectors: [".athing"],
+    interval: 8,
+  },
+  stackoverflow: {
+    pattern: /(^|\.)stackoverflow\.com$/,
+    selectors: [".s-post-summary", ".question-summary"],
+    interval: 6,
+  },
+};
+
+function detectCurrentSite() {
+  const hostname = window.location.hostname;
+  for (const [key, cfg] of Object.entries(SUPPORTED_SITES)) {
+    if (cfg.pattern.test(hostname)) {
+      return key;
+    }
+  }
+  return null;
+}
+
 (async () => {
   const ROOT_ID = "adgent-banner-root";
-  const POSTS_INTERVAL = 12;
-  const isReddit = /(^|\.)reddit\.com$/.test(window.location.hostname);
 
-  if (!isReddit) {
+  const currentSite = detectCurrentSite();
+  if (!currentSite) {
     return;
+  }
+
+  const POSTS_INTERVAL = SUPPORTED_SITES[currentSite].interval;
+
+  // Check campaign.json to see if this site is targeted
+  try {
+    const campaignUrl = chrome.runtime.getURL("campaign.json");
+    const campaignRes = await fetch(campaignUrl);
+    const campaign = await campaignRes.json();
+    const targetSites = campaign?.targetSites;
+    if (Array.isArray(targetSites) && targetSites.length && !targetSites.includes(currentSite)) {
+      return;
+    }
+  } catch {
+    // campaign.json missing or invalid — default to active on all supported sites
   }
 
   const staleRoot = document.getElementById(ROOT_ID);
@@ -29,6 +80,7 @@
   const state = {
     products,
     cookieProfile,
+    currentSite,
     currentProduct: selectProductForProfile(products, cookieProfile),
     isDockedToSide: false,
     side: null,
@@ -182,7 +234,7 @@ function createSideBanner(state, ROOT_ID, sideBannerId) {
   banner.innerHTML = `
     <div id="adgent-header">
       <div id="adgent-header-title">
-        <span>u/AdgentOfficial</span>
+        <span>Adgent</span>
         <span id="adgent-promoted">Promoted</span>
       </div>
       <div id="adgent-header-controls">
@@ -300,7 +352,7 @@ function mountBannerToSide(root) {
 }
 
 function injectRecurringFeedAds(state, interval) {
-  const posts = getRedditPosts();
+  const posts = getFeedPosts(state.currentSite);
   if (!posts.length) {
     return;
   }
@@ -330,7 +382,23 @@ function injectRecurringFeedAds(state, interval) {
     state.nextAdIndex += 1;
     const feedCard = createFeedAdCard(product, state);
     post.dataset.adgentAttached = "1";
-    post.insertAdjacentElement("afterend", feedCard);
+
+    // If the post lives inside a <ul>/<ol> (e.g. TechCrunch), wrap the card
+    // in an <li> so it slots into the list correctly.
+    const insertEl =
+      post.parentElement?.tagName === "UL" || post.parentElement?.tagName === "OL"
+        ? Object.assign(document.createElement("li"), {
+            className: post.className,
+            style: "list-style:none;",
+          })
+        : null;
+    if (insertEl) {
+      insertEl.appendChild(feedCard);
+      post.insertAdjacentElement("afterend", insertEl);
+    } else {
+      post.insertAdjacentElement("afterend", feedCard);
+    }
+
     state.lastAdSequence = sequence;
   });
 }
@@ -359,7 +427,7 @@ function createFeedAdCard(product, state) {
   card.innerHTML = `
     <div class="adgent-feed-header">
       <div class="adgent-feed-author">
-        <span>u/AdgentOfficial</span>
+        <span>Adgent</span>
         <span class="adgent-feed-promoted">Promoted</span>
       </div>
     </div>
@@ -415,14 +483,21 @@ function createFeedAdCard(product, state) {
     }
   });
 
-  // Suggestion chip clicks — fill the input and immediately submit
+  // Suggestion chip clicks — send the underlying prompt without showing it in the input
   card.querySelectorAll(".adgent-suggestion-chip").forEach((chip) => {
     chip.addEventListener("click", (event) => {
       event.stopPropagation();
       const prompt = chip.dataset.prompt;
       if (!prompt) return;
-      input.value = prompt;
-      submitFromCard();
+      // Call runAskFlow directly so the raw prompt never appears in the text box
+      runAskFlow(state, prompt, {
+        sourceCard: card,
+        sessionKey: card.dataset.adgentCardId,
+        sourceProduct: product,
+        responseElement: response,
+        askButton,
+        input,
+      });
     });
   });
 
@@ -446,10 +521,16 @@ function runAskFlow(state, prompt, feedContext) {
   sideElements.sendButton.textContent = "...";
   sideElements.sendButton.setAttribute("disabled", "true");
 
-  // First prompt only — show loading indicator (no previous response to keep)
   if (!session.lastResponse) {
+    // First query — replace with full loading indicator
     sideElements.response.innerHTML =
       '<p class="adgent-loading">Collecting product info\u2026</p>';
+  } else {
+    // Follow-up — keep previous response, append a "Checking…" pulse below it
+    const checking = document.createElement("p");
+    checking.className = "adgent-loading adgent-loading--checking";
+    checking.textContent = "Checking\u2026";
+    sideElements.response.appendChild(checking);
   }
 
   if (feedContext?.askButton) {
@@ -732,20 +813,14 @@ function observeFeedChanges(state, interval) {
   state.observer = observer;
 }
 
-function getRedditPosts() {
-  const selectorPriority = [
-    '[data-testid="post-container"]',
-    "shreddit-post",
-    '[id^="t3_"]',
-  ];
-
-  for (const selector of selectorPriority) {
+function getFeedPosts(site) {
+  const selectors = SUPPORTED_SITES[site]?.selectors || [];
+  for (const selector of selectors) {
     const nodes = Array.from(document.querySelectorAll(selector));
     if (nodes.length) {
       return nodes;
     }
   }
-
   return [];
 }
 

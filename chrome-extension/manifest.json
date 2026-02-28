@@ -4,13 +4,24 @@
   "description": "Injects an interactive ad agent banner on any website.",
   "version": "0.1.0",
   "permissions": ["storage"],
-  "host_permissions": ["*://*.reddit.com/*", "http://localhost:8787/*"],
+  "host_permissions": [
+    "*://*.reddit.com/*",
+    "*://*.techcrunch.com/*",
+    "*://news.ycombinator.com/*",
+    "*://*.stackoverflow.com/*",
+    "http://localhost:8787/*"
+  ],
   "background": {
     "service_worker": "background.js"
   },
   "content_scripts": [
     {
-      "matches": ["*://*.reddit.com/*"],
+      "matches": [
+        "*://*.reddit.com/*",
+        "*://*.techcrunch.com/*",
+        "*://news.ycombinator.com/*",
+        "*://*.stackoverflow.com/*"
+      ],
       "js": ["content.js"],
       "css": ["styles.css"],
       "run_at": "document_idle"
@@ -21,8 +32,13 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["products.json", "images/*"],
-      "matches": ["*://*.reddit.com/*"]
+      "resources": ["products.json", "campaign.json", "images/*"],
+      "matches": [
+        "*://*.reddit.com/*",
+        "*://*.techcrunch.com/*",
+        "*://news.ycombinator.com/*",
+        "*://*.stackoverflow.com/*"
+      ]
     }
   ]
 }

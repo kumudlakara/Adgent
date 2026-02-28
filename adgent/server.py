@@ -55,6 +55,7 @@ class SuggestRequest(BaseModel):
 class CampaignLaunchRequest(BaseModel):
     product: dict
     thumbnailDataUrl: str | None = None
+    targetSites: list[str] | None = None
 
 
 # ---------------------------------------------------------------------------
@@ -160,6 +161,16 @@ async def campaign_launch(request: CampaignLaunchRequest):
 
         products_path.write_text(
             json.dumps(products, indent=2, ensure_ascii=False),
+            encoding="utf-8",
+        )
+
+        # ------------------------------------------------------------------
+        # Write campaign.json with target sites
+        # ------------------------------------------------------------------
+        campaign_path = CHROME_EXTENSION_DIR / "campaign.json"
+        target_sites = request.targetSites or ["reddit", "techcrunch"]
+        campaign_path.write_text(
+            json.dumps({"targetSites": target_sites}, indent=2, ensure_ascii=False),
             encoding="utf-8",
         )
 
