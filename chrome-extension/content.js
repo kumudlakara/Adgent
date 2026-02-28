@@ -13,33 +13,92 @@
     staleRoot.remove();
   }
 
+  // Products sourced from nvidia-catalog/catalog.json (RTX 50-series, real pricing & images)
   const hardcodedProducts = [
     {
-      id: "wireless-earbuds",
-      name: "PulseBeat Wireless Earbuds",
-      price: "$59",
-      discount: "20% off",
-      delivery: "2 days",
-      availability: "In stock",
-      category: "audio"
+      id: "rtx-5090",
+      name: "NVIDIA GeForce RTX 5090",
+      price: "$1,999.99",
+      discount: "N/A",
+      delivery: "1-3 business days",
+      availability: "Check availability",
+      category: "gpu",
+      badge: "Flagship",
+      thumbnailUrl: "https://assets.nvidia.partners/images/png/RTX5090FE_gallery-A_3x4.png",
+      suggestions: [
+        { label: "Full details", prompt: "Show me the full details and image of the NVIDIA RTX 5090." },
+        { label: "Check stock", prompt: "Is the RTX 5090 in stock anywhere right now?" },
+        { label: "Compare vs 5080", prompt: "Compare the RTX 5090 vs RTX 5080 side by side." },
+        { label: "Active deals", prompt: "Are there any deals or bundles on the RTX 5090?" }
+      ]
     },
     {
-      id: "running-shoes",
-      name: "AeroRun Running Shoes",
-      price: "$89",
-      discount: "15% off",
-      delivery: "Tomorrow",
-      availability: "Limited stock",
-      category: "fitness"
+      id: "rtx-5080",
+      name: "NVIDIA GeForce RTX 5080",
+      price: "$999.99",
+      discount: "N/A",
+      delivery: "1-3 business days",
+      availability: "Check availability",
+      category: "gpu",
+      badge: "Best Seller",
+      thumbnailUrl: "https://assets.nvidia.partners/images/90YV0LV0-MVAA00-preview.webp",
+      suggestions: [
+        { label: "Full details", prompt: "Show me the full details and image of the RTX 5080." },
+        { label: "Check retailers", prompt: "Which retailer has the RTX 5080 cheapest?" },
+        { label: "Compare vs 5090", prompt: "How does the RTX 5080 compare to the RTX 5090?" },
+        { label: "Add to cart", prompt: "Add the NVIDIA RTX 5080 to my cart." }
+      ]
     },
     {
-      id: "coffee-maker",
-      name: "BrewMate Smart Coffee Maker",
-      price: "$129",
-      discount: "10% off",
-      delivery: "3-4 days",
-      availability: "In stock",
-      category: "home"
+      id: "rtx-5070-ti",
+      name: "NVIDIA GeForce RTX 5070 Ti",
+      price: "$749.99",
+      discount: "N/A",
+      delivery: "1-3 business days",
+      availability: "Check availability",
+      category: "gpu",
+      badge: null,
+      thumbnailUrl: "https://assets.nvidia.partners/images/90YV0LX0-MVAA00.webp",
+      suggestions: [
+        { label: "Full details", prompt: "Show me the full details and image of the RTX 5070 Ti." },
+        { label: "Best price", prompt: "Where can I buy the RTX 5070 Ti at the lowest price?" },
+        { label: "Compare vs 5080", prompt: "How does the RTX 5070 Ti compare to the RTX 5080?" },
+        { label: "Add to cart", prompt: "Add an ASUS RTX 5070 Ti to my cart." }
+      ]
+    },
+    {
+      id: "rtx-5070",
+      name: "NVIDIA GeForce RTX 5070",
+      price: "$549.99",
+      discount: "N/A",
+      delivery: "1-3 business days",
+      availability: "Check availability",
+      category: "gpu",
+      badge: "New",
+      thumbnailUrl: "https://assets.nvidia.partners/images/PRIME-RTX5070-12G_box with card_.webp",
+      suggestions: [
+        { label: "Full details", prompt: "Show me the full details and image of the RTX 5070." },
+        { label: "Current deals", prompt: "Are there any bundles or offers on the RTX 5070?" },
+        { label: "Compare vs 5070 Ti", prompt: "Compare the RTX 5070 vs RTX 5070 Ti." },
+        { label: "Add to cart", prompt: "Add the NVIDIA RTX 5070 Founder Edition to my cart." }
+      ]
+    },
+    {
+      id: "rtx-5060-ti",
+      name: "NVIDIA GeForce RTX 5060 Ti",
+      price: "$379.99",
+      discount: "N/A",
+      delivery: "1-3 business days",
+      availability: "Check availability",
+      category: "gpu",
+      badge: null,
+      thumbnailUrl: "https://assets.nvidia.partners/images/png/90YV0M90-MVAA00.png",
+      suggestions: [
+        { label: "Full details", prompt: "Show me the full details and image of the RTX 5060 Ti." },
+        { label: "Check stock", prompt: "Is the RTX 5060 Ti available to buy now?" },
+        { label: "Best value", prompt: "Which GPU gives the best value for money under $500?" },
+        { label: "Add to cart", prompt: "Add an RTX 5060 Ti to my cart." }
+      ]
     }
   ];
 
@@ -99,23 +158,11 @@ function inferTheme(lowerCookieText) {
   if (lowerCookieText.includes("light")) {
     return "light";
   }
-  if (lowerCookieText.includes("coffee") || lowerCookieText.includes("home")) {
-    return "warm";
-  }
   return "cool";
 }
 
-function inferCategory(lowerCookieText) {
-  if (/audio|music|earbud|headphone/.test(lowerCookieText)) {
-    return "audio";
-  }
-  if (/run|fitness|sports|gym/.test(lowerCookieText)) {
-    return "fitness";
-  }
-  if (/kitchen|coffee|home/.test(lowerCookieText)) {
-    return "home";
-  }
-  return "audio";
+function inferCategory() {
+  return "gpu";
 }
 
 function selectProductForProfile(products, profile) {
@@ -124,22 +171,23 @@ function selectProductForProfile(products, profile) {
 
 function pickProductFromPrompt(products, prompt) {
   const lowerPrompt = prompt.toLowerCase();
-  const keywordMap = {
-    audio: ["audio", "earbud", "music", "headphone"],
-    fitness: ["run", "shoe", "fitness", "gym"],
-    home: ["coffee", "kitchen", "home", "brew"]
-  };
+  // Most-specific match first to avoid "5070" matching "5070 ti"
+  const keywordMap = [
+    ["rtx-5090", ["5090"]],
+    ["rtx-5080", ["5080"]],
+    ["rtx-5070-ti", ["5070 ti"]],
+    ["rtx-5070", ["5070"]],
+    ["rtx-5060-ti", ["5060 ti"]],
+    ["rtx-5060", ["5060"]]
+  ];
 
-  const matchedCategory = Object.entries(keywordMap).find(([, keywords]) =>
-    keywords.some((keyword) => lowerPrompt.includes(keyword))
-  )?.[0];
-
-  if (matchedCategory) {
-    return products.find((product) => product.category === matchedCategory) || products[0];
+  for (const [id, keywords] of keywordMap) {
+    if (keywords.some((kw) => lowerPrompt.includes(kw))) {
+      return products.find((p) => p.id === id) || products[0];
+    }
   }
 
-  const index = Math.abs(hashString(lowerPrompt)) % products.length;
-  return products[index];
+  return products[0];
 }
 
 function renderProduct(elements, product) {
@@ -214,6 +262,7 @@ function createSideBanner(state, rootId, sideBannerId) {
     </div>
     <div id="adgent-content">
       <div id="adgent-session-tabs"></div>
+      <img id="adgent-product-image" src="" alt="" aria-hidden="true" />
       <div id="adgent-product-name"></div>
       <div id="adgent-feed-subtitle">Agentic ad assistant</div>
       <div id="adgent-product-meta">
@@ -227,6 +276,7 @@ function createSideBanner(state, rootId, sideBannerId) {
         <button id="adgent-send-btn">Ask</button>
       </div>
       <div id="adgent-response"></div>
+      <div id="adgent-next-steps"></div>
       <div id="adgent-badge"></div>
     </div>
   `;
@@ -237,6 +287,7 @@ function createSideBanner(state, rootId, sideBannerId) {
   const elements = {
     root,
     banner,
+    productImage: banner.querySelector("#adgent-product-image"),
     productName: banner.querySelector("#adgent-product-name"),
     price: banner.querySelector("#adgent-price"),
     discount: banner.querySelector("#adgent-discount"),
@@ -245,6 +296,7 @@ function createSideBanner(state, rootId, sideBannerId) {
     promptInput: banner.querySelector("#adgent-prompt-input"),
     sendButton: banner.querySelector("#adgent-send-btn"),
     response: banner.querySelector("#adgent-response"),
+    nextSteps: banner.querySelector("#adgent-next-steps"),
     badge: banner.querySelector("#adgent-badge"),
     tabs: banner.querySelector("#adgent-session-tabs"),
     minimizeButton: banner.querySelector("#adgent-min-btn"),
@@ -366,21 +418,30 @@ function createFeedAdCard(product, state) {
   card.dataset.adgentCardId = `feed-${state.nextFeedCardId}`;
   state.nextFeedCardId += 1;
 
+  const badgeHtml = product.badge
+    ? `<span class="adgent-feed-badge">${escapeHtml(product.badge)}</span>`
+    : "";
+
+  const suggestionsHtml = (product.suggestions || [])
+    .map((s) => `<button class="adgent-suggestion-chip" data-prompt="${escapeHtml(s.prompt)}">${escapeHtml(s.label)}</button>`)
+    .join("");
+
   card.innerHTML = `
     <div class="adgent-feed-header">
       <div class="adgent-feed-author">
         <span>u/AdgentOfficial</span>
         <span class="adgent-feed-promoted">Promoted</span>
       </div>
+      ${badgeHtml}
     </div>
     <div class="adgent-feed-title">${escapeHtml(product.name)}</div>
-    <div class="adgent-feed-copy">Ask for delivery time, availability, and discounts.</div>
+    <div class="adgent-feed-copy">Ask Adgent anything — specs, availability, comparisons, or add to cart.</div>
     <div class="adgent-feed-chips">
       <span class="adgent-chip">Price: ${escapeHtml(product.price)}</span>
-      <span class="adgent-chip">Discount: ${escapeHtml(product.discount)}</span>
       <span class="adgent-chip">Delivery: ${escapeHtml(product.delivery)}</span>
       <span class="adgent-chip">Stock: ${escapeHtml(product.availability)}</span>
     </div>
+    <div class="adgent-feed-suggestions">${suggestionsHtml}</div>
     <div class="adgent-feed-ask-row">
       <input class="adgent-feed-input" type="text" placeholder="Ask Adgent about this product" />
       <button class="adgent-feed-ask-btn">Ask</button>
@@ -422,6 +483,17 @@ function createFeedAdCard(product, state) {
     }
   });
 
+  // Suggestion chip clicks — fill the input and immediately submit
+  card.querySelectorAll(".adgent-suggestion-chip").forEach((chip) => {
+    chip.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const prompt = chip.dataset.prompt;
+      if (!prompt) return;
+      input.value = prompt;
+      submitFromCard();
+    });
+  });
+
   return card;
 }
 
@@ -455,6 +527,7 @@ function runAskFlow(state, prompt, feedContext) {
 
   askBackend(prompt, baseProduct, state.cookieProfile)
     .then((backendResult) => {
+      // Update session product if the agent discussed a different GPU
       const nextProduct = pickProductFromPrompt(state.products, prompt);
       session.product = {
         ...nextProduct,
@@ -466,8 +539,9 @@ function runAskFlow(state, prompt, feedContext) {
       session.lastPrompt = prompt;
       const message = backendResult?.message || `Showing ${session.product.name}`;
       session.lastResponse = message;
+      session.nextSteps = backendResult?.next_steps || [];
+      session.productImage = backendResult?.product_image || null;
       renderActiveSession(state);
-      sideElements.response.textContent = message;
       if (feedContext?.responseElement) {
         feedContext.responseElement.textContent = message;
       }
@@ -477,10 +551,10 @@ function runAskFlow(state, prompt, feedContext) {
       session.product = nextProduct;
       state.currentProduct = session.product;
       session.lastPrompt = prompt;
-      const fallbackMessage = `Backend unavailable. Local suggestion: ${nextProduct.name}`;
+      session.nextSteps = [];
+      const fallbackMessage = `Backend unavailable. Try: "What are the specs of the ${nextProduct.name}?"`;
       session.lastResponse = fallbackMessage;
       renderActiveSession(state);
-      sideElements.response.textContent = fallbackMessage;
       if (feedContext?.responseElement) {
         feedContext.responseElement.textContent = fallbackMessage;
       }
@@ -534,7 +608,9 @@ function getOrCreateSession(state, feedContext) {
     label: sourceProduct.name,
     product: { ...sourceProduct },
     lastPrompt: "",
-    lastResponse: ""
+    lastResponse: "",
+    nextSteps: [],
+    productImage: null
   };
   state.nextSessionId += 1;
   state.sessions.push(session);
@@ -573,6 +649,41 @@ function renderSessionTabs(state) {
   });
 }
 
+function renderProductImage(state, imageUrl) {
+  const el = state.side?.elements?.productImage;
+  if (!el) {
+    return;
+  }
+  if (imageUrl) {
+    el.src = imageUrl;
+    el.alt = "Product image";
+    el.removeAttribute("aria-hidden");
+    el.style.display = "block";
+  } else {
+    el.src = "";
+    el.style.display = "none";
+    el.setAttribute("aria-hidden", "true");
+  }
+}
+
+function renderNextSteps(state, nextSteps) {
+  const el = state.side?.elements?.nextSteps;
+  if (!el) {
+    return;
+  }
+  el.innerHTML = "";
+  (nextSteps || []).forEach(({ label, prompt }) => {
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "adgent-next-step-chip";
+    chip.textContent = label;
+    chip.addEventListener("click", () => {
+      runAskFlow(state, prompt, { sessionId: state.activeSessionId });
+    });
+    el.appendChild(chip);
+  });
+}
+
 function renderActiveSession(state) {
   const session = getActiveSession(state);
   if (!session || !state.side) {
@@ -583,6 +694,8 @@ function renderActiveSession(state) {
   renderBadge(state.side.elements, state.cookieProfile);
   state.side.elements.promptInput.value = session.lastPrompt || "";
   state.side.elements.response.textContent = session.lastResponse || "";
+  renderProductImage(state, session.productImage || null);
+  renderNextSteps(state, session.nextSteps || []);
 }
 
 function shortenLabel(value, limit) {

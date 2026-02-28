@@ -358,3 +358,100 @@
 #adgent-banner.minimized #adgent-content {
   display: none;
 }
+
+/* --- Product image in side banner --- */
+#adgent-product-image {
+  display: none;
+  width: 100%;
+  max-height: 160px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: rgba(148, 163, 184, 0.08);
+  padding: 8px;
+}
+
+#adgent-banner[data-theme="dark"] #adgent-product-image {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* --- Feed card badge --- */
+.adgent-feed-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* --- Suggestion chips on feed card (shown on ad click) --- */
+.adgent-feed-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+  margin-bottom: 4px;
+}
+
+.adgent-suggestion-chip {
+  all: unset;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.07);
+  white-space: nowrap;
+  transition: background 120ms ease;
+}
+
+.adgent-suggestion-chip:hover {
+  background: rgba(37, 99, 235, 0.16);
+}
+
+.adgent-feed-card[data-theme="dark"] .adgent-suggestion-chip {
+  border-color: rgba(147, 197, 253, 0.4);
+  color: #93c5fd;
+  background: rgba(147, 197, 253, 0.08);
+}
+
+.adgent-feed-card[data-theme="dark"] .adgent-suggestion-chip:hover {
+  background: rgba(147, 197, 253, 0.18);
+}
+
+/* --- Next-step chips in side banner (shown after agent response) --- */
+#adgent-next-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.adgent-next-step-chip {
+  all: unset;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  color: #2563eb;
+  background: rgba(37, 99, 235, 0.06);
+  white-space: nowrap;
+  transition: background 120ms ease;
+}
+
+.adgent-next-step-chip:hover {
+  background: rgba(37, 99, 235, 0.14);
+}
+
+#adgent-banner[data-theme="dark"] .adgent-next-step-chip {
+  border-color: rgba(147, 197, 253, 0.35);
+  color: #93c5fd;
+  background: rgba(147, 197, 253, 0.07);
+}
+
+#adgent-banner[data-theme="dark"] .adgent-next-step-chip:hover {
+  background: rgba(147, 197, 253, 0.16);
+}

@@ -1,0 +1,13 @@
+[project]
+name = "adgent"
+version = "0.1.0"
+description = "Agentic ad assistant powered by Claude and MCP"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "playwright>=1.58.0",
+    "mcp[cli]>=1.0.0",
+    "anthropic>=0.40.0",
+    "fastapi>=0.115.0",
+    "uvicorn>=0.30.0",
+]
