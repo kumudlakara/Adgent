@@ -1,0 +1,13 @@
+{
+  "name": "nvidia-catalog",
+  "version": "1.0.0",
+  "description": "NVIDIA Marketplace graphics card catalog scraper",
+  "type": "module",
+  "scripts": {
+    "scrape": "node scraper.js",
+    "scrape:debug": "PWDEBUG=1 node scraper.js"
+  },
+  "dependencies": {
+    "playwright": "^1.41.0"
+  }
+}
