@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { BarChart3, PlusCircle, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
+import DotGrid from "./DotGrid";
 
 const navItems = [
   { to: "/", icon: PlusCircle, label: "Create Ad" },
@@ -44,7 +45,17 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </div>
       </header>
       <main className="relative flex-1 p-4 md:p-8 overflow-auto">
-        <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_80%_60%_at_50%_120%,hsl(var(--primary)/0.25),transparent)]" />
+        {/* Interactive dot grid */}
+        <DotGrid />
+        {/* Gradient color orbs */}
+        <div className="pointer-events-none fixed inset-0 z-[1]">
+          {/* Cyan orb — top-right */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_65%_55%_at_90%_0%,hsl(195_100%_50%/0.13),transparent)]" />
+          {/* Violet orb — bottom-left */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_55%_60%_at_-5%_95%,hsl(270_70%_55%/0.12),transparent)]" />
+          {/* Cyan bloom — bottom-center */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_115%,hsl(195_100%_50%/0.22),transparent)]" />
+        </div>
         {children}
       </main>
     </div>
