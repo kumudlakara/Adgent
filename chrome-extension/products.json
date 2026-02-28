@@ -1,0 +1,92 @@
+[
+  {
+    "id": "rtx-5090",
+    "name": "NVIDIA GeForce RTX 5090",
+    "price": "$1,999.99",
+    "discount": "N/A",
+    "delivery": "1-3 business days",
+    "availability": "Check availability",
+    "category": "gpu",
+    "theme": "dark",
+    "badge": "Flagship",
+    "thumbnailUrl": "https://assets.nvidia.partners/images/png/RTX5090FE_gallery-A_3x4.png",
+    "suggestions": [
+      { "label": "Full details", "prompt": "Show me the full details and image of the NVIDIA RTX 5090." },
+      { "label": "Check stock", "prompt": "Is the RTX 5090 in stock anywhere right now?" },
+      { "label": "Compare vs 5080", "prompt": "Compare the RTX 5090 vs RTX 5080 side by side." },
+      { "label": "Active deals", "prompt": "Are there any deals or bundles on the RTX 5090?" }
+    ]
+  },
+  {
+    "id": "rtx-5080",
+    "name": "NVIDIA GeForce RTX 5080",
+    "price": "$999.99",
+    "discount": "N/A",
+    "delivery": "1-3 business days",
+    "availability": "Check availability",
+    "category": "gpu",
+    "theme": "dark",
+    "badge": "Best Seller",
+    "thumbnailUrl": "https://assets.nvidia.partners/images/90YV0LV0-MVAA00-preview.webp",
+    "suggestions": [
+      { "label": "Full details", "prompt": "Show me the full details and image of the RTX 5080." },
+      { "label": "Check retailers", "prompt": "Which retailer has the RTX 5080 cheapest?" },
+      { "label": "Compare vs 5090", "prompt": "How does the RTX 5080 compare to the RTX 5090?" },
+      { "label": "Add to cart", "prompt": "Add the NVIDIA RTX 5080 to my cart." }
+    ]
+  },
+  {
+    "id": "rtx-5070-ti",
+    "name": "NVIDIA GeForce RTX 5070 Ti",
+    "price": "$749.99",
+    "discount": "N/A",
+    "delivery": "1-3 business days",
+    "availability": "Check availability",
+    "category": "gpu",
+    "theme": "dark",
+    "badge": null,
+    "thumbnailUrl": "https://assets.nvidia.partners/images/90YV0LX0-MVAA00.webp",
+    "suggestions": [
+      { "label": "Full details", "prompt": "Show me the full details and image of the RTX 5070 Ti." },
+      { "label": "Best price", "prompt": "Where can I buy the RTX 5070 Ti at the lowest price?" },
+      { "label": "Compare vs 5080", "prompt": "How does the RTX 5070 Ti compare to the RTX 5080?" },
+      { "label": "Add to cart", "prompt": "Add an ASUS RTX 5070 Ti to my cart." }
+    ]
+  },
+  {
+    "id": "rtx-5070",
+    "name": "NVIDIA GeForce RTX 5070",
+    "price": "$549.99",
+    "discount": "N/A",
+    "delivery": "1-3 business days",
+    "availability": "Check availability",
+    "category": "gpu",
+    "theme": "dark",
+    "badge": "New",
+    "thumbnailUrl": "https://assets.nvidia.partners/images/PRIME-RTX5070-12G_box with card_.webp",
+    "suggestions": [
+      { "label": "Full details", "prompt": "Show me the full details and image of the RTX 5070." },
+      { "label": "Current deals", "prompt": "Are there any bundles or offers on the RTX 5070?" },
+      { "label": "Compare vs 5070 Ti", "prompt": "Compare the RTX 5070 vs RTX 5070 Ti." },
+      { "label": "Add to cart", "prompt": "Add the NVIDIA RTX 5070 Founder Edition to my cart." }
+    ]
+  },
+  {
+    "id": "rtx-5060-ti",
+    "name": "NVIDIA GeForce RTX 5060 Ti",
+    "price": "$379.99",
+    "discount": "N/A",
+    "delivery": "1-3 business days",
+    "availability": "Check availability",
+    "category": "gpu",
+    "theme": "dark",
+    "badge": null,
+    "thumbnailUrl": "https://assets.nvidia.partners/images/png/90YV0M90-MVAA00.png",
+    "suggestions": [
+      { "label": "Full details", "prompt": "Show me the full details and image of the RTX 5060 Ti." },
+      { "label": "Check stock", "prompt": "Is the RTX 5060 Ti available to buy now?" },
+      { "label": "Best value", "prompt": "Which GPU gives the best value for money under $500?" },
+      { "label": "Add to cart", "prompt": "Add an RTX 5060 Ti to my cart." }
+    ]
+  }
+]
