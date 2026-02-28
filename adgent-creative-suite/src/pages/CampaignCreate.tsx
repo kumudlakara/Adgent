@@ -32,7 +32,11 @@ async function getRunware(): Promise<RunwareInstance> {
   runwareConnecting = (async () => {
     try {
       // Disconnect stale instance if any
-      try { runwareInstance?.disconnect?.(); } catch { /* ignore */ }
+      try {
+        runwareInstance?.disconnect?.();
+      } catch {
+        /* ignore */
+      }
 
       const instance = new Runware({ apiKey: runwareApiKey });
 
@@ -97,11 +101,9 @@ export default function CampaignCreate() {
                 (prev) => [...prev, reader.result as string],
               );
             } else {
-              (
-                setter as React.Dispatch<
-                  React.SetStateAction<string | null>
-                >
-              )(reader.result as string);
+              (setter as React.Dispatch<React.SetStateAction<string | null>>)(
+                reader.result as string,
+              );
             }
           };
           reader.readAsDataURL(file);
@@ -209,7 +211,11 @@ export default function CampaignCreate() {
       toast.success("Ad generated successfully");
     } catch (error) {
       // Invalidate the singleton so the next attempt reconnects cleanly
-      try { runwareInstance?.disconnect?.(); } catch { /* ignore */ }
+      try {
+        runwareInstance?.disconnect?.();
+      } catch {
+        /* ignore */
+      }
       runwareInstance = null;
 
       const errorMessage = getRunwareErrorMessage(error);

@@ -21,7 +21,7 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["products.json"],
+      "resources": ["products.json", "images/*"],
       "matches": ["*://*.reddit.com/*"]
     }
   ]

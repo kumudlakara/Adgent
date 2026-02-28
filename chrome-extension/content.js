@@ -39,7 +39,7 @@
     nextFeedCardId: 1,
     nextAdIndex: 0,
     postSequence: 0,
-    lastAdSequence: 0
+    lastAdSequence: 0,
   };
 
   injectRecurringFeedAds(state, POSTS_INTERVAL);
@@ -56,7 +56,10 @@ function getCookieProfile() {
     .map((part) => {
       const [rawKey, ...rawValue] = part.split("=");
       try {
-        return [decodeURIComponent(rawKey || ""), decodeURIComponent(rawValue.join("=") || "")];
+        return [
+          decodeURIComponent(rawKey || ""),
+          decodeURIComponent(rawValue.join("=") || ""),
+        ];
       } catch {
         return [rawKey || "", rawValue.join("=") || ""];
       }
@@ -65,7 +68,11 @@ function getCookieProfile() {
   const cookieMap = Object.fromEntries(cookiePairs);
   const lowerCookieText = cookieText.toLowerCase();
 
-  const themeFromCookie = (cookieMap.theme || cookieMap.user_theme || "").toLowerCase();
+  const themeFromCookie = (
+    cookieMap.theme ||
+    cookieMap.user_theme ||
+    ""
+  ).toLowerCase();
   const knownTheme = ["dark", "light", "warm", "cool"].includes(themeFromCookie)
     ? themeFromCookie
     : null;
@@ -75,7 +82,9 @@ function getCookieProfile() {
   return {
     theme: knownTheme || inferTheme(lowerCookieText),
     category: inferredCategory,
-    hasReturningUserSignal: /returning|last_order|premium|member/.test(lowerCookieText)
+    hasReturningUserSignal: /returning|last_order|premium|member/.test(
+      lowerCookieText,
+    ),
   };
 }
 
@@ -94,7 +103,10 @@ function inferCategory() {
 }
 
 function selectProductForProfile(products, profile) {
-  return products.find((product) => product.category === profile.category) || products[0];
+  return (
+    products.find((product) => product.category === profile.category) ||
+    products[0]
+  );
 }
 
 function pickProductFromPrompt(products, prompt, fallback = null) {
@@ -106,7 +118,7 @@ function pickProductFromPrompt(products, prompt, fallback = null) {
     ["rtx-5070-ti", ["5070 ti"]],
     ["rtx-5070", ["5070"]],
     ["rtx-5060-ti", ["5060 ti"]],
-    ["rtx-5060", ["5060"]]
+    ["rtx-5060", ["5060"]],
   ];
 
   for (const [id, keywords] of keywordMap) {
@@ -121,9 +133,26 @@ function pickProductFromPrompt(products, prompt, fallback = null) {
 
 function renderProduct(elements, product) {
   if (elements.productImage) {
-    elements.productImage.src = product.thumbnailUrl || "";
+    const src = resolveThumbnailUrl(product.thumbnailUrl);
+    elements.productImage.src = src || "";
     elements.productImage.alt = product.name || "";
-    elements.productImage.style.display = product.thumbnailUrl ? "block" : "none";
+    elements.productImage.style.display = src ? "block" : "none";
+  }
+}
+
+/**
+ * Resolve a thumbnailUrl that may be:
+ *  - an absolute https:// URL  → returned as-is
+ *  - a relative path like "images/foo.png" → resolved via chrome.runtime.getURL()
+ *  - empty / falsy → returns ""
+ */
+function resolveThumbnailUrl(url) {
+  if (!url) return "";
+  if (/^https?:\/\/|^data:/.test(url)) return url;
+  try {
+    return chrome.runtime.getURL(url);
+  } catch {
+    return url;
   }
 }
 
@@ -131,7 +160,7 @@ async function askBackend(prompt, currentProduct, cookieProfile) {
   const response = await fetch("http://localhost:8787/api/ad-agent/query", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ prompt, currentProduct, cookieProfile })
+    body: JSON.stringify({ prompt, currentProduct, cookieProfile }),
   });
   if (!response.ok) {
     throw new Error(`Backend responded with ${response.status}`);
@@ -191,7 +220,7 @@ function createSideBanner(state, ROOT_ID, sideBannerId) {
     nextSteps: banner.querySelector("#adgent-next-steps"),
     tabs: banner.querySelector("#adgent-session-tabs"),
     minimizeButton: banner.querySelector("#adgent-min-btn"),
-    closeButton: banner.querySelector("#adgent-close-btn")
+    closeButton: banner.querySelector("#adgent-close-btn"),
   };
 
   elements.sendButton.addEventListener("click", () => {
@@ -203,7 +232,8 @@ function createSideBanner(state, ROOT_ID, sideBannerId) {
 
     const prompt = elements.promptInput.value.trim();
     if (!prompt) {
-      elements.response.textContent = "Type a prompt to fetch a product suggestion.";
+      elements.response.textContent =
+        "Type a prompt to fetch a product suggestion.";
       return;
     }
 
@@ -220,7 +250,8 @@ function createSideBanner(state, ROOT_ID, sideBannerId) {
 
       const prompt = elements.promptInput.value.trim();
       if (!prompt) {
-        elements.response.textContent = "Type a prompt to fetch a product suggestion.";
+        elements.response.textContent =
+          "Type a prompt to fetch a product suggestion.";
         return;
       }
       runAskFlow(state, prompt, { sessionId: session.id });
@@ -248,11 +279,12 @@ function mountBannerToSide(root) {
 
   const sidebar =
     document.querySelector('[data-testid="right-sidebar"]') ||
-    document.querySelector('.side') ||
-    document.querySelector('aside');
+    document.querySelector(".side") ||
+    document.querySelector("aside");
 
   if (sidebar) {
-    root.style.cssText = "width: 100%; float: none; clear: none; margin: 0 0 12px 0;";
+    root.style.cssText =
+      "width: 100%; float: none; clear: none; margin: 0 0 12px 0;";
     sidebar.insertBefore(root, sidebar.firstChild);
     return;
   }
@@ -310,14 +342,18 @@ function createFeedAdCard(product, state) {
   card.dataset.adgentCardId = `feed-${state.nextFeedCardId}`;
   state.nextFeedCardId += 1;
 
-  const thumbnailHtml = product.thumbnailUrl
+  const resolvedThumbnail = resolveThumbnailUrl(product.thumbnailUrl);
+  const thumbnailHtml = resolvedThumbnail
     ? `<a href="${escapeHtml(product.productUrl || "#")}" target="_blank" rel="noopener noreferrer" class="adgent-feed-thumbnail-link">
-        <img class="adgent-feed-thumbnail" src="${escapeHtml(product.thumbnailUrl)}" alt="${escapeHtml(product.name)}" />
+        <img class="adgent-feed-thumbnail" src="${escapeHtml(resolvedThumbnail)}" alt="${escapeHtml(product.name)}" />
       </a>`
     : "";
 
   const suggestionsHtml = (product.suggestions || [])
-    .map((s) => `<button class="adgent-suggestion-chip" data-prompt="${escapeHtml(s.prompt)}">${escapeHtml(s.label)}</button>`)
+    .map(
+      (s) =>
+        `<button class="adgent-suggestion-chip" data-prompt="${escapeHtml(s.prompt)}">${escapeHtml(s.label)}</button>`,
+    )
     .join("");
 
   card.innerHTML = `
@@ -341,7 +377,15 @@ function createFeedAdCard(product, state) {
   const askButton = card.querySelector(".adgent-feed-ask-btn");
   const response = card.querySelector(".adgent-feed-response");
 
-  ["click", "mousedown", "mouseup", "pointerdown", "pointerup", "keydown", "keyup"].forEach((eventName) => {
+  [
+    "click",
+    "mousedown",
+    "mouseup",
+    "pointerdown",
+    "pointerup",
+    "keydown",
+    "keyup",
+  ].forEach((eventName) => {
     card.addEventListener(eventName, (event) => {
       event.stopPropagation();
     });
@@ -360,7 +404,7 @@ function createFeedAdCard(product, state) {
       sourceProduct: product,
       responseElement: response,
       askButton,
-      input
+      input,
     });
   };
 
@@ -397,14 +441,15 @@ function runAskFlow(state, prompt, feedContext) {
   dockToSide(state, feedContext?.sourceCard || null);
   const sideElements = state.side.elements;
   renderSessionTabs(state);
-  renderActiveSession(state);  // show the clicked product immediately
+  renderActiveSession(state); // show the clicked product immediately
   sideElements.promptInput.value = "";
   sideElements.sendButton.textContent = "...";
   sideElements.sendButton.setAttribute("disabled", "true");
 
   // First prompt only — show loading indicator (no previous response to keep)
   if (!session.lastResponse) {
-    sideElements.response.innerHTML = "<p class=\"adgent-loading\">Collecting product info\u2026</p>";
+    sideElements.response.innerHTML =
+      '<p class="adgent-loading">Collecting product info\u2026</p>';
   }
 
   if (feedContext?.askButton) {
@@ -421,16 +466,21 @@ function runAskFlow(state, prompt, feedContext) {
   askBackend(prompt, baseProduct, state.cookieProfile)
     .then((backendResult) => {
       // Switch product only if the prompt explicitly names a different GPU
-      const nextProduct = pickProductFromPrompt(state.products, prompt, session.product);
+      const nextProduct = pickProductFromPrompt(
+        state.products,
+        prompt,
+        session.product,
+      );
       session.product = {
         ...nextProduct,
         delivery: backendResult?.delivery || nextProduct.delivery,
         availability: backendResult?.availability || nextProduct.availability,
-        discount: backendResult?.discount || nextProduct.discount
+        discount: backendResult?.discount || nextProduct.discount,
       };
       state.currentProduct = session.product;
       session.lastPrompt = prompt;
-      const message = backendResult?.message || `Showing ${session.product.name}`;
+      const message =
+        backendResult?.message || `Showing ${session.product.name}`;
       session.lastResponse = message;
       session.nextSteps = backendResult?.next_steps || [];
       session.productImage = backendResult?.product_image || null;
@@ -440,7 +490,11 @@ function runAskFlow(state, prompt, feedContext) {
       }
     })
     .catch(() => {
-      const nextProduct = pickProductFromPrompt(state.products, prompt, session.product);
+      const nextProduct = pickProductFromPrompt(
+        state.products,
+        prompt,
+        session.product,
+      );
       session.product = nextProduct;
       state.currentProduct = session.product;
       session.lastPrompt = prompt;
@@ -473,21 +527,27 @@ function ensureSideBanner(state) {
 
 function getOrCreateSession(state, feedContext) {
   if (feedContext?.sessionId) {
-    const existingById = state.sessions.find((session) => session.id === feedContext.sessionId);
+    const existingById = state.sessions.find(
+      (session) => session.id === feedContext.sessionId,
+    );
     if (existingById) {
       return existingById;
     }
   }
 
   if (feedContext?.sessionKey) {
-    const existing = state.sessions.find((session) => session.key === feedContext.sessionKey);
+    const existing = state.sessions.find(
+      (session) => session.key === feedContext.sessionKey,
+    );
     if (existing) {
       return existing;
     }
   }
 
   if (!feedContext && state.activeSessionId) {
-    const active = state.sessions.find((session) => session.id === state.activeSessionId);
+    const active = state.sessions.find(
+      (session) => session.id === state.activeSessionId,
+    );
     if (active) {
       return active;
     }
@@ -502,7 +562,7 @@ function getOrCreateSession(state, feedContext) {
     lastPrompt: "",
     lastResponse: "",
     nextSteps: [],
-    productImage: null
+    productImage: null,
   };
   state.nextSessionId += 1;
   state.sessions.push(session);
@@ -513,7 +573,10 @@ function getActiveSession(state) {
   if (!state.activeSessionId) {
     return null;
   }
-  return state.sessions.find((session) => session.id === state.activeSessionId) || null;
+  return (
+    state.sessions.find((session) => session.id === state.activeSessionId) ||
+    null
+  );
 }
 
 function renderSessionTabs(state) {
@@ -547,8 +610,9 @@ function renderProductImage(state, imageUrl) {
   if (!el) {
     return;
   }
-  if (imageUrl) {
-    el.src = imageUrl;
+  const resolvedUrl = resolveThumbnailUrl(imageUrl);
+  if (resolvedUrl) {
+    el.src = resolvedUrl;
     el.alt = "Product image";
     el.removeAttribute("aria-hidden");
     el.style.display = "block";
@@ -592,14 +656,24 @@ function renderActiveSession(state) {
   }
 
   // Update banner theme to match the active session's product
-  state.side.banner.setAttribute("data-theme", session.product.theme || "light");
+  state.side.banner.setAttribute(
+    "data-theme",
+    session.product.theme || "light",
+  );
 
   // Agent-provided image takes priority, otherwise fall back to product thumbnail
-  renderProductImage(state, session.productImage || session.product.thumbnailUrl || null);
+  renderProductImage(
+    state,
+    session.productImage || session.product.thumbnailUrl || null,
+  );
   state.side.elements.promptInput.value = "";
-  state.side.elements.response.innerHTML = renderMarkdown(session.lastResponse || "");
+  state.side.elements.response.innerHTML = renderMarkdown(
+    session.lastResponse || "",
+  );
   // Show product suggestion chips before first query, next-step chips after
-  const chips = session.lastPrompt ? (session.nextSteps || []) : (session.product.suggestions || []);
+  const chips = session.lastPrompt
+    ? session.nextSteps || []
+    : session.product.suggestions || [];
   renderNextSteps(state, chips);
 }
 
@@ -659,7 +733,11 @@ function observeFeedChanges(state, interval) {
 }
 
 function getRedditPosts() {
-  const selectorPriority = ['[data-testid="post-container"]', "shreddit-post", '[id^="t3_"]'];
+  const selectorPriority = [
+    '[data-testid="post-container"]',
+    "shreddit-post",
+    '[id^="t3_"]',
+  ];
 
   for (const selector of selectorPriority) {
     const nodes = Array.from(document.querySelectorAll(selector));
@@ -691,7 +769,9 @@ function escapeHtml(value) {
 
 function renderMarkdown(raw) {
   if (!raw) return "";
-  const blocks = String(raw).trim().split(/\n{2,}/);
+  const blocks = String(raw)
+    .trim()
+    .split(/\n{2,}/);
   return blocks
     .map((block) => {
       const lines = block.split("\n").filter((l) => l.trim());
@@ -699,7 +779,9 @@ function renderMarkdown(raw) {
       const isList = lines.every((l) => /^\s*[-•*]\s/.test(l));
       if (isList) {
         const items = lines
-          .map((l) => `<li>${inlineMarkdown(l.replace(/^\s*[-•*]\s+/, ""))}</li>`)
+          .map(
+            (l) => `<li>${inlineMarkdown(l.replace(/^\s*[-•*]\s+/, ""))}</li>`,
+          )
           .join("");
         return `<ul>${items}</ul>`;
       }
