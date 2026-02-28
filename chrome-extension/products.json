@@ -1,5 +1,36 @@
 [
   {
+    "id": "quench-your-thirst",
+    "name": "Quench Your Thirst",
+    "price": "",
+    "discount": "N/A",
+    "delivery": "",
+    "availability": "",
+    "category": "custom",
+    "theme": "dark",
+    "badge": "Quench Your Thirst",
+    "thumbnailUrl": "https://im.runware.ai/image/os/w02d10/ws/2/ii/91bd7549-a011-4dde-b57f-03f0362226cd.jpg",
+    "productUrl": "https://www.yourcoca-cola.co.uk/",
+    "suggestions": [
+      {
+        "label": "Learn more",
+        "prompt": "Tell me more about Quench Your Thirst."
+      },
+      {
+        "label": "Check price",
+        "prompt": "What is the price of Quench Your Thirst?"
+      },
+      {
+        "label": "View details",
+        "prompt": "Show me details for Quench Your Thirst."
+      },
+      {
+        "label": "Compare options",
+        "prompt": "What are alternatives to Quench Your Thirst?"
+      }
+    ]
+  },
+  {
     "id": "coke-le-lo",
     "name": "Coke le lo!",
     "price": "",
