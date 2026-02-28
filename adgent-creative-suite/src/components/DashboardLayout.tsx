@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { BarChart3, PlusCircle, Zap } from "lucide-react";
+import { BarChart3, PlusCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 import DotGrid from "./DotGrid";
 
@@ -16,10 +16,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <header className="sticky top-0 z-40 border-b border-border bg-card/80 backdrop-blur-md">
         <div className="max-w-6xl mx-auto flex items-center justify-between px-4 md:px-8 h-14">
           <Link to="/" className="flex items-center gap-2">
-            <div className="flex items-center justify-center w-7 h-7 rounded-lg bg-primary shadow-glow-sm">
-              <Zap className="w-3.5 h-3.5 text-primary-foreground" />
+            <div className="flex flex-col items-start gap-0.5">
+              <span className="text-2xl font-bold text-foreground tracking-tight">Addie.</span>
+              <div className="h-0.5 w-[38%] rounded-full bg-gradient-to-r from-cyan-400 to-violet-500" />
             </div>
-            <span className="text-lg font-bold text-foreground tracking-tight">Adgent</span>
           </Link>
           <nav className="flex items-center gap-1">
             {navItems.map((item) => {
