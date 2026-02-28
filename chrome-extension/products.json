@@ -1,32 +1,32 @@
 [
   {
     "id": "coke-le-lo",
-    "name": "Coke Le Lo!",
+    "name": "Coke le lo!",
     "price": "",
     "discount": "N/A",
     "delivery": "",
     "availability": "",
     "category": "custom",
     "theme": "dark",
-    "badge": "Coke Le Lo!",
-    "thumbnailUrl": "",
+    "badge": "Coke le lo!",
+    "thumbnailUrl": "https://im.runware.ai/image/os/w02d10/ws/2/ii/20aa937e-4ab7-44f6-ae26-3ad954ed00e0.jpg",
     "productUrl": "https://github.com/aaaaayushh",
     "suggestions": [
       {
         "label": "Learn more",
-        "prompt": "Tell me more about Coke Le Lo!."
+        "prompt": "Tell me more about Coke le lo!."
       },
       {
         "label": "Check price",
-        "prompt": "What is the price of Coke Le Lo!?"
+        "prompt": "What is the price of Coke le lo!?"
       },
       {
         "label": "View details",
-        "prompt": "Show me details for Coke Le Lo!."
+        "prompt": "Show me details for Coke le lo!."
       },
       {
         "label": "Compare options",
-        "prompt": "What are alternatives to Coke Le Lo!?"
+        "prompt": "What are alternatives to Coke le lo!?"
       }
     ]
   },

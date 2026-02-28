@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { Upload, Sparkles, X, ImagePlus, ArrowRight } from "lucide-react";
-import { EPhotoMakerEnum, Runware } from "@runware/sdk-js";
+import { Runware } from "@runware/sdk-js";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -23,6 +23,12 @@ type RunwareInstance = InstanceType<typeof Runware>;
 let runwareInstance: RunwareInstance | null = null;
 let runwareConnecting: Promise<RunwareInstance> | null = null;
 
+function resetRunware() {
+  try { runwareInstance?.disconnect?.(); } catch { /* ignore */ }
+  runwareInstance = null;
+  runwareConnecting = null;
+}
+
 async function getRunware(): Promise<RunwareInstance> {
   if (runwareInstance) return runwareInstance;
 
@@ -31,22 +37,26 @@ async function getRunware(): Promise<RunwareInstance> {
 
   runwareConnecting = (async () => {
     try {
-      // Disconnect stale instance if any
-      try {
-        runwareInstance?.disconnect?.();
-      } catch {
-        /* ignore */
-      }
+      resetRunware();
 
-      const instance = new Runware({ apiKey: runwareApiKey });
+      // Runware.initialize() creates the instance, opens the WebSocket,
+      // and waits for the authentication handshake to finish before
+      // resolving — this is the SDK's recommended entry-point.
+      const instance = await Promise.race([
+        Runware.initialize({ apiKey: runwareApiKey }),
+        new Promise<never>((_, reject) =>
+          setTimeout(
+            () => reject(new Error("Runware connection timed out — check your network or API key.")),
+            15_000,
+          ),
+        ),
+      ]);
 
-      // Give the WebSocket time to connect & authenticate.
-      // imageInference / photoMaker call ensureConnection() internally,
-      // but a short upfront wait avoids repeated internal retries.
-      await new Promise((r) => setTimeout(r, 2_000));
-
-      runwareInstance = instance;
-      return instance;
+      runwareInstance = instance as RunwareInstance;
+      return runwareInstance;
+    } catch (err) {
+      resetRunware();
+      throw err;
     } finally {
       runwareConnecting = null;
     }
@@ -101,9 +111,11 @@ export default function CampaignCreate() {
                 (prev) => [...prev, reader.result as string],
               );
             } else {
-              (setter as React.Dispatch<React.SetStateAction<string | null>>)(
-                reader.result as string,
-              );
+              (
+                setter as React.Dispatch<
+                  React.SetStateAction<string | null>
+                >
+              )(reader.result as string);
             }
           };
           reader.readAsDataURL(file);
@@ -143,36 +155,36 @@ export default function CampaignCreate() {
         .filter(Boolean)
         .join("\n");
 
-      const generateWithModel = async (model: string) => {
-        // Wrap in a 90-second overall timeout
+      const generateWithModel = async (model: string): Promise<string> => {
         const timeoutMs = 90_000;
-        const result = await Promise.race([
-          (async () => {
-            if (productImages.length > 0) {
-              const res = await runware.photoMaker({
-                style: EPhotoMakerEnum.Photographic,
-                inputImages: productImages,
-                positivePrompt,
-                model,
-                width: 1280,
-                height: 720,
-                numberResults: 1,
-                outputType: "URL",
-              });
-              return res?.[0]?.imageURL;
-            }
 
-            const res = await runware.imageInference({
-              positivePrompt,
-              model,
-              width: 1280,
-              height: 720,
-              numberResults: 1,
-              outputType: "URL",
-            });
+        const generate = async () => {
+          let seedImageUrl: string | undefined;
 
-            return res?.[0]?.imageURL;
-          })(),
+          if (productImages.length > 0) {
+            console.log("[Runware] uploading product image");
+            const uploaded = await runware.imageUpload({ image: productImages[0] });
+            seedImageUrl = uploaded?.imageURL;
+            console.log("[Runware] uploaded image URL", seedImageUrl);
+          }
+
+          console.log("[Runware] imageInference request", { model, positivePrompt, seedImage: seedImageUrl });
+          const res = await runware.imageInference({
+            positivePrompt,
+            model,
+            width: 1280,
+            height: 768,
+            numberResults: 1,
+            outputType: "URL",
+            ...(seedImageUrl ? { seedImage: seedImageUrl, strength: 0.8 } : {}),
+          });
+          console.log("[Runware] imageInference response", res);
+          const img = res?.[0];
+          return img?.imageURL ?? img?.imageDataURI ?? img?.imageBase64Data;
+        };
+
+        const image = await Promise.race([
+          generate(),
           new Promise<never>((_, reject) =>
             setTimeout(
               () => reject(new Error("Image generation timed out after 90 s")),
@@ -181,7 +193,12 @@ export default function CampaignCreate() {
           ),
         ]);
 
-        return result;
+        if (!image) {
+          throw new Error(
+            "Runware returned an empty result — the model may not support this prompt or resolution.",
+          );
+        }
+        return image;
       };
 
       let generatedImage: string | undefined;
@@ -211,12 +228,7 @@ export default function CampaignCreate() {
       toast.success("Ad generated successfully");
     } catch (error) {
       // Invalidate the singleton so the next attempt reconnects cleanly
-      try {
-        runwareInstance?.disconnect?.();
-      } catch {
-        /* ignore */
-      }
-      runwareInstance = null;
+      resetRunware();
 
       const errorMessage = getRunwareErrorMessage(error);
       console.error("Runware generation error", error);
