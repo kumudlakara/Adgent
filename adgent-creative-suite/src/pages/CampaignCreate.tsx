@@ -16,7 +16,7 @@ const runwareApiKey = sanitizeEnvValue(import.meta.env.VITE_RUNWARE_API_KEY);
 const configuredRunwareImageModel = sanitizeEnvValue(
   import.meta.env.VITE_RUNWARE_IMAGE_MODEL,
 );
-const defaultRunwareImageModel = "runware:100@1";
+const defaultRunwareImageModel = "google:4@3";
 
 /* ── Singleton Runware connection ────────────────────────────── */
 type RunwareInstance = InstanceType<typeof Runware>;
@@ -24,7 +24,11 @@ let runwareInstance: RunwareInstance | null = null;
 let runwareConnecting: Promise<RunwareInstance> | null = null;
 
 function resetRunware() {
-  try { runwareInstance?.disconnect?.(); } catch { /* ignore */ }
+  try {
+    runwareInstance?.disconnect?.();
+  } catch {
+    /* ignore */
+  }
   runwareInstance = null;
   runwareConnecting = null;
 }
@@ -46,7 +50,12 @@ async function getRunware(): Promise<RunwareInstance> {
         Runware.initialize({ apiKey: runwareApiKey }),
         new Promise<never>((_, reject) =>
           setTimeout(
-            () => reject(new Error("Runware connection timed out — check your network or API key.")),
+            () =>
+              reject(
+                new Error(
+                  "Runware connection timed out — check your network or API key.",
+                ),
+              ),
             15_000,
           ),
         ),
@@ -111,11 +120,9 @@ export default function CampaignCreate() {
                 (prev) => [...prev, reader.result as string],
               );
             } else {
-              (
-                setter as React.Dispatch<
-                  React.SetStateAction<string | null>
-                >
-              )(reader.result as string);
+              (setter as React.Dispatch<React.SetStateAction<string | null>>)(
+                reader.result as string,
+              );
             }
           };
           reader.readAsDataURL(file);
@@ -159,24 +166,46 @@ export default function CampaignCreate() {
         const timeoutMs = 90_000;
 
         const generate = async () => {
-          let seedImageUrl: string | undefined;
+          let referenceImageUrls: string[] | undefined;
 
           if (productImages.length > 0) {
-            console.log("[Runware] uploading product image");
-            const uploaded = await runware.imageUpload({ image: productImages[0] });
-            seedImageUrl = uploaded?.imageURL;
-            console.log("[Runware] uploaded image URL", seedImageUrl);
+            const imagesToUpload = productImages.slice(0, 14);
+            console.log(
+              `[Runware] uploading ${imagesToUpload.length} reference image(s)`,
+            );
+            const uploadedUrls = await Promise.all(
+              imagesToUpload.map((img) => runware.imageUpload({ image: img })),
+            );
+            referenceImageUrls = uploadedUrls
+              .map((u) => u?.imageURL)
+              .filter(Boolean) as string[];
+            console.log(
+              "[Runware] uploaded reference URLs",
+              referenceImageUrls,
+            );
           }
 
-          console.log("[Runware] imageInference request", { model, positivePrompt, seedImage: seedImageUrl });
-          const res = await runware.imageInference({
-            positivePrompt,
+          console.log("[Runware] imageInference request", {
             model,
-            width: 1280,
+            positivePrompt,
+            referenceImages: referenceImageUrls,
+          });
+          const res = await runware.imageInference({
+            taskType: "imageInference",
+            taskUUID: crypto.randomUUID(),
+            model,
+            positivePrompt,
+            width: 1376,
             height: 768,
-            numberResults: 1,
-            outputType: "URL",
-            ...(seedImageUrl ? { seedImage: seedImageUrl, strength: 0.8 } : {}),
+            ...(referenceImageUrls?.length
+              ? { referenceImages: referenceImageUrls }
+              : {}),
+            settings: {
+              temperature: 0.7,
+              topP: 0.9,
+              systemPrompt:
+                "Focus on creating photorealistic advertising visuals with emphasis on brand clarity, compelling composition, and professional lighting.",
+            },
           });
           console.log("[Runware] imageInference response", res);
           const img = res?.[0];
