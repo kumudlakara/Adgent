@@ -1,0 +1,13 @@
+{
+  "name": "nike-catalog",
+  "version": "1.0.0",
+  "description": "Nike men's shoes catalog scraper",
+  "type": "module",
+  "scripts": {
+    "scrape": "node scraper.js",
+    "scrape:debug": "PWDEBUG=1 node scraper.js"
+  },
+  "dependencies": {
+    "playwright": "^1.41.0"
+  }
+}
