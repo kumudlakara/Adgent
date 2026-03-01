@@ -447,12 +447,10 @@ function createFeedAdCard(product, state) {
       <input class="addie-feed-input" type="text" placeholder="Ask Addie about this product" />
       <button class="addie-feed-ask-btn">Ask</button>
     </div>
-    <div class="addie-feed-response"></div>
   `;
 
   const input = card.querySelector(".addie-feed-input");
   const askButton = card.querySelector(".addie-feed-ask-btn");
-  const response = card.querySelector(".addie-feed-response");
 
   [
     "click",
@@ -470,16 +468,12 @@ function createFeedAdCard(product, state) {
 
   const submitFromCard = () => {
     const prompt = input.value.trim();
-    if (!prompt) {
-      response.textContent = "Type a prompt first.";
-      return;
-    }
+    if (!prompt) return;
 
     runAskFlow(state, prompt, {
       sourceCard: card,
       sessionKey: card.dataset.addieCardId,
       sourceProduct: product,
-      responseElement: response,
       askButton,
       input,
     });
@@ -503,7 +497,6 @@ function createFeedAdCard(product, state) {
         sourceCard: card,
         sessionKey: card.dataset.addieCardId,
         sourceProduct: product,
-        responseElement: response,
         askButton,
         input,
       });
@@ -547,11 +540,9 @@ function runAskFlow(state, prompt, feedContext) {
     feedContext.askButton.setAttribute("disabled", "true");
   }
 
-  if (feedContext?.responseElement) {
-    feedContext.responseElement.innerHTML = "<p>Fetching details…</p>";
-  }
-
   const baseProduct = session.product;
+
+  const sessionId = session.id;
 
   askBackend(prompt, baseProduct, state.cookieProfile)
     .then((backendResult) => {
@@ -574,9 +565,9 @@ function runAskFlow(state, prompt, feedContext) {
       session.lastResponse = message;
       session.nextSteps = backendResult?.next_steps || [];
       session.productImage = backendResult?.product_image || null;
-      renderActiveSession(state);
-      if (feedContext?.responseElement) {
-        feedContext.responseElement.innerHTML = renderMarkdown(message);
+      // Only re-render if this session is still the one the user is viewing
+      if (state.activeSessionId === sessionId) {
+        renderActiveSession(state);
       }
     })
     .catch(() => {
@@ -591,14 +582,15 @@ function runAskFlow(state, prompt, feedContext) {
       session.nextSteps = [];
       const fallbackMessage = `Backend unavailable. Try: "What are the specs of the ${nextProduct.name}?"`;
       session.lastResponse = fallbackMessage;
-      renderActiveSession(state);
-      if (feedContext?.responseElement) {
-        feedContext.responseElement.innerHTML = renderMarkdown(fallbackMessage);
+      if (state.activeSessionId === sessionId) {
+        renderActiveSession(state);
       }
     })
     .finally(() => {
-      sideElements.sendButton.textContent = "Ask";
-      sideElements.sendButton.removeAttribute("disabled");
+      if (state.activeSessionId === sessionId) {
+        sideElements.sendButton.textContent = "Ask";
+        sideElements.sendButton.removeAttribute("disabled");
+      }
       if (feedContext?.askButton) {
         feedContext.askButton.textContent = "Ask";
         feedContext.askButton.removeAttribute("disabled");

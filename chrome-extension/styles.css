@@ -325,8 +325,7 @@
 
 /* ─── Agent response ───────────────────────────────────────────────── */
 
-#addie-response,
-.addie-feed-response {
+#addie-response {
   min-height: 16px;
   font-size: 12px;
   line-height: 1.6;
@@ -334,29 +333,24 @@
   width: 100%;
 }
 
-#addie-response p,
-.addie-feed-response p {
+#addie-response p {
   margin: 0 0 6px;
 }
 
-#addie-response p:last-child,
-.addie-feed-response p:last-child {
+#addie-response p:last-child {
   margin-bottom: 0;
 }
 
-#addie-response ul,
-.addie-feed-response ul {
+#addie-response ul {
   margin: 0 0 6px;
   padding-left: 16px;
 }
 
-#addie-response li,
-.addie-feed-response li {
+#addie-response li {
   margin-bottom: 3px;
 }
 
-#addie-response strong,
-.addie-feed-response strong {
+#addie-response strong {
   font-weight: 600;
   opacity: 1;
 }
@@ -636,7 +630,7 @@
 .addie-feed-ask-row {
   display: flex;
   gap: 6px;
-  padding: 10px 14px 0;
+  padding: 10px 14px 14px;
 }
 
 .addie-feed-input {
@@ -681,9 +675,6 @@
   opacity: 0.88;
 }
 
-.addie-feed-response {
-  padding: 8px 14px 14px;
-}
 
 .addie-feed-card-engaged {
   opacity: 0.65;

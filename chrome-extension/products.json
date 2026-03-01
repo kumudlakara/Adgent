@@ -1,5 +1,36 @@
 [
   {
+    "id": "nike-dunk-low-se-lny",
+    "name": "Nike Dunk Low SE 'LNY'",
+    "price": "",
+    "discount": "N/A",
+    "delivery": "",
+    "availability": "",
+    "category": "custom",
+    "theme": "dark",
+    "badge": "Just Do It. ",
+    "thumbnailUrl": "https://im.runware.ai/image/os/w02d10/ws/2/ii/a78f48ce-40d3-4d9d-962a-ad43e442d685.jpg",
+    "productUrl": "https://www.nike.com/gb/t/dunk-low-se-lny-shoes-ByGL9UOY/IQ1118-220",
+    "suggestions": [
+      {
+        "label": "Learn more",
+        "prompt": "Tell me more about Nike Dunk Low SE 'LNY'."
+      },
+      {
+        "label": "Check price",
+        "prompt": "What is the price of Nike Dunk Low SE 'LNY'?"
+      },
+      {
+        "label": "View details",
+        "prompt": "Show me details for Nike Dunk Low SE 'LNY'."
+      },
+      {
+        "label": "Compare options",
+        "prompt": "What are alternatives to Nike Dunk Low SE 'LNY'?"
+      }
+    ]
+  },
+  {
     "id": "nike-air-force-1-07-se-lny",
     "name": "Nike Air Force 1 '07 SE 'LNY'",
     "price": "",
