@@ -1,43 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowRight, Globe, Users, Link } from "lucide-react";
+import { ArrowRight, Globe, Link } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { toast } from "sonner";
 
 const websites = ["Reddit", "TechCrunch", "Hacker News", "Stack Overflow"];
 
-const ageGroups = ["18-24", "25-34", "35-44", "45-54", "55-64", "65+"];
-const interests = [
-  "Technology",
-  "Fashion",
-  "Sports",
-  "Gaming",
-  "Finance",
-  "Travel",
-  "Food",
-  "Health & Fitness",
-  "Education",
-  "Entertainment",
-];
-const genders = ["All", "Male", "Female", "Non-binary"];
-const devices = ["All Devices", "Desktop", "Mobile", "Tablet"];
 
 export default function CampaignTarget() {
   const navigate = useNavigate();
   const [selectedSites, setSelectedSites] = useState<string[]>([]);
-  const [selectedAges, setSelectedAges] = useState<string[]>([]);
-  const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
-  const [productUrl, setProductUrl] = useState("");
+const [productUrl, setProductUrl] = useState("");
   const [productName, setProductName] = useState("");
   const [displayText, setDisplayText] = useState("");
   const [isLaunching, setIsLaunching] = useState(false);
@@ -234,102 +210,6 @@ export default function CampaignTarget() {
                 {site}
               </button>
             ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Audience */}
-      <Card className="border-border">
-        <CardHeader className="pb-3">
-          <CardTitle className="flex items-center gap-2 text-base">
-            <Users className="w-4 h-4 text-primary" /> Target Audience
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-5">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <Label>Gender</Label>
-              <Select defaultValue="All">
-                <SelectTrigger className="mt-1.5">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {genders.map((g) => (
-                    <SelectItem key={g} value={g}>
-                      {g}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            <div>
-              <Label>Device</Label>
-              <Select defaultValue="All Devices">
-                <SelectTrigger className="mt-1.5">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {devices.map((d) => (
-                    <SelectItem key={d} value={d}>
-                      {d}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-
-          <div>
-            <Label className="mb-2 block">Age Groups</Label>
-            <div className="flex flex-wrap gap-2">
-              {ageGroups.map((age) => (
-                <button
-                  key={age}
-                  onClick={() => toggleItem(selectedAges, setSelectedAges, age)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
-                    selectedAges.includes(age)
-                      ? "bg-primary text-primary-foreground border-primary"
-                      : "bg-card text-foreground border-border hover:border-primary/50"
-                  }`}
-                >
-                  {age}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <Label className="mb-2 block">Interests</Label>
-            <div className="flex flex-wrap gap-2">
-              {interests.map((interest) => (
-                <button
-                  key={interest}
-                  onClick={() =>
-                    toggleItem(
-                      selectedInterests,
-                      setSelectedInterests,
-                      interest,
-                    )
-                  }
-                  className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
-                    selectedInterests.includes(interest)
-                      ? "bg-primary text-primary-foreground border-primary"
-                      : "bg-card text-foreground border-border hover:border-primary/50"
-                  }`}
-                >
-                  {interest}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <Label htmlFor="location">Location</Label>
-            <Input
-              id="location"
-              placeholder="e.g. United States, Europe"
-              className="mt-1.5"
-            />
           </div>
         </CardContent>
       </Card>
