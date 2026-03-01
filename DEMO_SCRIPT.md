@@ -19,9 +19,9 @@
 
 **[0:00 — Creative Suite open on screen]**
 
-"Online ads are static. You see a banner, maybe you click, probably you don't. We built Adgent to change that.
+"Online ads are static. You see a banner, maybe you click, probably you don't. We built Addie to change that — it's a platform for businesses to rethink how they advertise entirely.
 
-This is our campaign creation tool. I'm going to launch an ad for the NVIDIA RTX 5090 right now."
+What you're looking at is the advertiser-facing creative suite. A business would sign up, set up their brand profile, and then use this to launch ads. We've already done that setup — so I'm going to go straight to launching an ad for the NVIDIA RTX 5090 right now."
 
 ---
 
@@ -51,7 +51,7 @@ This is our campaign creation tool. I'm going to launch an ad for the NVIDIA RTX
 
 *Fill in fields quickly. Click Launch Campaign.*
 
-"Launching. What just happened: the backend wrote this product and image directly into the Chrome extension. No upload pipeline, no ad network approval queue."
+"Launching. This ad is now live in our pool — in production, a ranking algorithm decides when and where to surface it across target pages, the same way Google Ads would. For this demo, we're using a Chrome extension to inject it directly so you can see it in action right now."
 
 ---
 
@@ -60,8 +60,6 @@ This is our campaign creation tool. I'm going to launch an ad for the NVIDIA RTX
 "I'll switch to Reddit and refresh."
 
 *Scroll slowly down the feed until an Addie card appears.*
-
-"There it is — right in the feed, between real posts. This is not an iframe. Addie injects a native-looking card that matches the page."
 
 ---
 
@@ -77,7 +75,7 @@ This is our campaign creation tool. I'm going to launch an ad for the NVIDIA RTX
 
 **[1:18 — Side panel opens, response loads]**
 
-"What's happening under the hood: the extension is calling our local Claude Opus agent, which in turn is calling our MCP tool server — a live GPU catalog with 86 products, real retailer prices, and availability data. The agent picks the right tools, checks the data, and comes back with a structured answer."
+"What's happening under the hood: the extension is calling the Addie agent, which talks to the business's MCP server — that's something a business would connect during profile setup, so Addie has live access to their product catalog, inventory, and pricing. For this demo, we built our own MCP servers on top of mock product catalogs. The agent picks the right tools, queries the data, and comes back with a structured answer."
 
 *Response renders in side panel.*
 
@@ -85,17 +83,17 @@ This is our campaign creation tool. I'm going to launch an ad for the NVIDIA RTX
 
 **[1:35 — Point to the response and next-step chips]**
 
-"The answer is formatted cleanly with availability and pricing. And it generates follow-up chips — 'Compare vs 5080', 'Add to cart', 'Find cheapest retailer' — so the conversation keeps going."
+"The answer is formatted cleanly with availability and pricing. And it generates follow-up chips — 'Compare vs 5080', 'Find cheapest retailer' — so the conversation keeps going."
 
 *Click 'Add to cart'.*
 
-"The agent can manage a full shopping cart and hand the user off to the retailer with a direct purchase link."
+"For production scenarios, the agent can manage a full shopping cart and hand the user off to the retailer with a direct purchase link."
 
 ---
 
 **[1:50 — Wrap up]**
 
-"That is Adgent. An ad that knows what it's selling, answers questions in real time, and gets out of the way when the user is ready to buy."
+"That is Addie. An ad that knows what it's selling, answers questions in real time, and gets out of the way when the user is ready to buy."
 
 ---
 
