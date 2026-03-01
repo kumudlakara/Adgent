@@ -1,7 +1,7 @@
 const BACKEND_BASE_URL = "http://localhost:8787";
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message?.type !== "ADGENT_QUERY") {
+  if (message?.type !== "ADDIE_QUERY") {
     return;
   }
 

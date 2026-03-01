@@ -56,7 +56,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           {/* Cyan bloom — bottom-center */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_115%,hsl(195_100%_50%/0.22),transparent)]" />
         </div>
-        {children}
+        <div className="relative z-[2]">{children}</div>
       </main>
     </div>
   );

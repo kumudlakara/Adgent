@@ -1,0 +1,33 @@
+[
+  {
+    "id": "rtx-4070ti",
+    "name": "RTX 4070Ti",
+    "price": "",
+    "discount": "N/A",
+    "delivery": "",
+    "availability": "",
+    "category": "custom",
+    "theme": "dark",
+    "badge": "RTX 4070Ti",
+    "thumbnailUrl": "https://im.runware.ai/image/os/w02d10/ws/2/ii/efedc9dc-223b-4cf6-8f75-f1d301303c0c.jpg",
+    "productUrl": "https://marketplace.nvidia.com/en-gb/consumer/graphics-cards/msi-nvidia-geforce-rtx-4070-ti-super-ventus-2x-oc-16gb-gddr6x-ray-tracing-graphics-card-8448-core-2640mhz-boost/",
+    "suggestions": [
+      {
+        "label": "Learn more",
+        "prompt": "Tell me more about RTX 4070Ti."
+      },
+      {
+        "label": "Check price",
+        "prompt": "What is the price of RTX 4070Ti?"
+      },
+      {
+        "label": "View details",
+        "prompt": "Show me details for RTX 4070Ti."
+      },
+      {
+        "label": "Compare options",
+        "prompt": "What are alternatives to RTX 4070Ti?"
+      }
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Adgent Demo Banner",
+  "name": "Addie Demo Banner",
   "description": "Injects an interactive ad agent banner on any website.",
   "version": "0.1.0",
   "permissions": ["storage"],
@@ -28,7 +28,7 @@
     }
   ],
   "action": {
-    "default_title": "Adgent Demo"
+    "default_title": "Addie Demo"
   },
   "web_accessible_resources": [
     {

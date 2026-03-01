@@ -4,7 +4,11 @@
 const SUPPORTED_SITES = {
   reddit: {
     pattern: /(^|\.)reddit\.com$/,
-    selectors: ['[data-testid="post-container"]', "shreddit-post", '[id^="t3_"]'],
+    selectors: [
+      '[data-testid="post-container"]',
+      "shreddit-post",
+      '[id^="t3_"]',
+    ],
     interval: 12,
   },
   techcrunch: {
@@ -36,7 +40,7 @@ function detectCurrentSite() {
 }
 
 (async () => {
-  const ROOT_ID = "adgent-banner-root";
+  const ROOT_ID = "addie-banner-root";
 
   const currentSite = detectCurrentSite();
   if (!currentSite) {
@@ -51,7 +55,11 @@ function detectCurrentSite() {
     const campaignRes = await fetch(campaignUrl);
     const campaign = await campaignRes.json();
     const targetSites = campaign?.targetSites;
-    if (Array.isArray(targetSites) && targetSites.length && !targetSites.includes(currentSite)) {
+    if (
+      Array.isArray(targetSites) &&
+      targetSites.length &&
+      !targetSites.includes(currentSite)
+    ) {
       return;
     }
   } catch {
@@ -232,28 +240,28 @@ function createSideBanner(state, ROOT_ID, sideBannerId) {
   banner.setAttribute("data-view", "side");
 
   banner.innerHTML = `
-    <div id="adgent-header">
-      <div id="adgent-header-title">
-        <span>Adgent</span>
-        <span id="adgent-promoted">Promoted</span>
+    <div id="addie-header">
+      <div id="addie-header-title">
+        <span>Addie</span>
+        <span id="addie-promoted">Promoted</span>
       </div>
-      <div id="adgent-header-controls">
-        <button id="adgent-min-btn" class="adgent-btn-ghost" title="Minimize">_</button>
-        <button id="adgent-close-btn" class="adgent-btn-ghost" title="Close">×</button>
+      <div id="addie-header-controls">
+        <button id="addie-min-btn" class="addie-btn-ghost" title="Minimize">_</button>
+        <button id="addie-close-btn" class="addie-btn-ghost" title="Close">×</button>
       </div>
     </div>
-    <div id="adgent-content">
-      <div id="adgent-scroll-area">
-        <div id="adgent-session-tabs"></div>
-        <a id="adgent-product-link" href="#" target="_blank" rel="noopener noreferrer">
-          <img id="adgent-product-image" src="" alt="" />
+    <div id="addie-content">
+      <div id="addie-scroll-area">
+        <div id="addie-session-tabs"></div>
+        <a id="addie-product-link" href="#" target="_blank" rel="noopener noreferrer">
+          <img id="addie-product-image" src="" alt="" />
         </a>
-        <div id="adgent-response"></div>
-        <div id="adgent-next-steps"></div>
+        <div id="addie-response"></div>
+        <div id="addie-next-steps"></div>
       </div>
-      <div id="adgent-prompt-row">
-        <input id="adgent-prompt-input" type="text" placeholder="Ask about this product..." />
-        <button id="adgent-send-btn">Ask</button>
+      <div id="addie-prompt-row">
+        <input id="addie-prompt-input" type="text" placeholder="Ask about this product..." />
+        <button id="addie-send-btn">Ask</button>
       </div>
     </div>
   `;
@@ -264,15 +272,15 @@ function createSideBanner(state, ROOT_ID, sideBannerId) {
   const elements = {
     root,
     banner,
-    productLink: banner.querySelector("#adgent-product-link"),
-    productImage: banner.querySelector("#adgent-product-image"),
-    promptInput: banner.querySelector("#adgent-prompt-input"),
-    sendButton: banner.querySelector("#adgent-send-btn"),
-    response: banner.querySelector("#adgent-response"),
-    nextSteps: banner.querySelector("#adgent-next-steps"),
-    tabs: banner.querySelector("#adgent-session-tabs"),
-    minimizeButton: banner.querySelector("#adgent-min-btn"),
-    closeButton: banner.querySelector("#adgent-close-btn"),
+    productLink: banner.querySelector("#addie-product-link"),
+    productImage: banner.querySelector("#addie-product-image"),
+    promptInput: banner.querySelector("#addie-prompt-input"),
+    sendButton: banner.querySelector("#addie-send-btn"),
+    response: banner.querySelector("#addie-response"),
+    nextSteps: banner.querySelector("#addie-next-steps"),
+    tabs: banner.querySelector("#addie-session-tabs"),
+    minimizeButton: banner.querySelector("#addie-min-btn"),
+    closeButton: banner.querySelector("#addie-close-btn"),
   };
 
   elements.sendButton.addEventListener("click", () => {
@@ -358,17 +366,17 @@ function injectRecurringFeedAds(state, interval) {
   }
 
   posts.forEach((post) => {
-    if (!post.dataset.adgentSeq) {
+    if (!post.dataset.addieSeq) {
       state.postSequence += 1;
-      post.dataset.adgentSeq = String(state.postSequence);
+      post.dataset.addieSeq = String(state.postSequence);
     }
 
-    const sequence = Number(post.dataset.adgentSeq || "0");
+    const sequence = Number(post.dataset.addieSeq || "0");
     if (!sequence) {
       return;
     }
 
-    if (post.dataset.adgentAttached === "1") {
+    if (post.dataset.addieAttached === "1") {
       return;
     }
 
@@ -381,12 +389,13 @@ function injectRecurringFeedAds(state, interval) {
     const product = state.products[state.nextAdIndex % state.products.length];
     state.nextAdIndex += 1;
     const feedCard = createFeedAdCard(product, state);
-    post.dataset.adgentAttached = "1";
+    post.dataset.addieAttached = "1";
 
     // If the post lives inside a <ul>/<ol> (e.g. TechCrunch), wrap the card
     // in an <li> so it slots into the list correctly.
     const insertEl =
-      post.parentElement?.tagName === "UL" || post.parentElement?.tagName === "OL"
+      post.parentElement?.tagName === "UL" ||
+      post.parentElement?.tagName === "OL"
         ? Object.assign(document.createElement("li"), {
             className: post.className,
             style: "list-style:none;",
@@ -405,45 +414,45 @@ function injectRecurringFeedAds(state, interval) {
 
 function createFeedAdCard(product, state) {
   const card = document.createElement("article");
-  card.className = "adgent-feed-card";
+  card.className = "addie-feed-card";
   card.setAttribute("data-theme", product.theme || "light");
-  card.dataset.adgentCardId = `feed-${state.nextFeedCardId}`;
+  card.dataset.addieCardId = `feed-${state.nextFeedCardId}`;
   state.nextFeedCardId += 1;
 
   const resolvedThumbnail = resolveThumbnailUrl(product.thumbnailUrl);
   const thumbnailHtml = resolvedThumbnail
-    ? `<a href="${escapeHtml(product.productUrl || "#")}" target="_blank" rel="noopener noreferrer" class="adgent-feed-thumbnail-link">
-        <img class="adgent-feed-thumbnail" src="${escapeHtml(resolvedThumbnail)}" alt="${escapeHtml(product.name)}" />
+    ? `<a href="${escapeHtml(product.productUrl || "#")}" target="_blank" rel="noopener noreferrer" class="addie-feed-thumbnail-link">
+        <img class="addie-feed-thumbnail" src="${escapeHtml(resolvedThumbnail)}" alt="${escapeHtml(product.name)}" />
       </a>`
     : "";
 
   const suggestionsHtml = (product.suggestions || [])
     .map(
       (s) =>
-        `<button class="adgent-suggestion-chip" data-prompt="${escapeHtml(s.prompt)}">${escapeHtml(s.label)}</button>`,
+        `<button class="addie-suggestion-chip" data-prompt="${escapeHtml(s.prompt)}">${escapeHtml(s.label)}</button>`,
     )
     .join("");
 
   card.innerHTML = `
-    <div class="adgent-feed-header">
-      <div class="adgent-feed-author">
-        <span>Adgent</span>
-        <span class="adgent-feed-promoted">Promoted</span>
+    <div class="addie-feed-header">
+      <div class="addie-feed-author">
+        <span>Addie</span>
+        <span class="addie-feed-promoted">Promoted</span>
       </div>
     </div>
-    <div class="adgent-feed-title">${escapeHtml(product.name)}</div>
+    <div class="addie-feed-title">${escapeHtml(product.name)}</div>
     ${thumbnailHtml}
-    <div class="adgent-feed-suggestions">${suggestionsHtml}</div>
-    <div class="adgent-feed-ask-row">
-      <input class="adgent-feed-input" type="text" placeholder="Ask Adgent about this product" />
-      <button class="adgent-feed-ask-btn">Ask</button>
+    <div class="addie-feed-suggestions">${suggestionsHtml}</div>
+    <div class="addie-feed-ask-row">
+      <input class="addie-feed-input" type="text" placeholder="Ask Addie about this product" />
+      <button class="addie-feed-ask-btn">Ask</button>
     </div>
-    <div class="adgent-feed-response"></div>
+    <div class="addie-feed-response"></div>
   `;
 
-  const input = card.querySelector(".adgent-feed-input");
-  const askButton = card.querySelector(".adgent-feed-ask-btn");
-  const response = card.querySelector(".adgent-feed-response");
+  const input = card.querySelector(".addie-feed-input");
+  const askButton = card.querySelector(".addie-feed-ask-btn");
+  const response = card.querySelector(".addie-feed-response");
 
   [
     "click",
@@ -468,7 +477,7 @@ function createFeedAdCard(product, state) {
 
     runAskFlow(state, prompt, {
       sourceCard: card,
-      sessionKey: card.dataset.adgentCardId,
+      sessionKey: card.dataset.addieCardId,
       sourceProduct: product,
       responseElement: response,
       askButton,
@@ -484,7 +493,7 @@ function createFeedAdCard(product, state) {
   });
 
   // Suggestion chip clicks — send the underlying prompt without showing it in the input
-  card.querySelectorAll(".adgent-suggestion-chip").forEach((chip) => {
+  card.querySelectorAll(".addie-suggestion-chip").forEach((chip) => {
     chip.addEventListener("click", (event) => {
       event.stopPropagation();
       const prompt = chip.dataset.prompt;
@@ -492,7 +501,7 @@ function createFeedAdCard(product, state) {
       // Call runAskFlow directly so the raw prompt never appears in the text box
       runAskFlow(state, prompt, {
         sourceCard: card,
-        sessionKey: card.dataset.adgentCardId,
+        sessionKey: card.dataset.addieCardId,
         sourceProduct: product,
         responseElement: response,
         askButton,
@@ -524,11 +533,11 @@ function runAskFlow(state, prompt, feedContext) {
   if (!session.lastResponse) {
     // First query — replace with full loading indicator
     sideElements.response.innerHTML =
-      '<p class="adgent-loading">Collecting product info\u2026</p>';
+      '<p class="addie-loading">Collecting product info\u2026</p>';
   } else {
     // Follow-up — keep previous response, append a "Checking…" pulse below it
     const checking = document.createElement("p");
-    checking.className = "adgent-loading adgent-loading--checking";
+    checking.className = "addie-loading addie-loading--checking";
     checking.textContent = "Checking\u2026";
     sideElements.response.appendChild(checking);
   }
@@ -602,7 +611,7 @@ function ensureSideBanner(state) {
     return;
   }
 
-  state.side = createSideBanner(state, "adgent-banner-root", "adgent-banner");
+  state.side = createSideBanner(state, "addie-banner-root", "addie-banner");
   renderProduct(state.side.elements, state.currentProduct);
 }
 
@@ -671,7 +680,7 @@ function renderSessionTabs(state) {
   state.sessions.forEach((session) => {
     const tab = document.createElement("button");
     tab.type = "button";
-    tab.className = "adgent-session-tab";
+    tab.className = "addie-session-tab";
     if (session.id === state.activeSessionId) {
       tab.classList.add("active");
     }
@@ -721,7 +730,7 @@ function renderNextSteps(state, nextSteps) {
   (nextSteps || []).forEach(({ label, prompt }) => {
     const chip = document.createElement("button");
     chip.type = "button";
-    chip.className = "adgent-next-step-chip";
+    chip.className = "addie-next-step-chip";
     chip.textContent = label;
     chip.addEventListener("click", () => {
       runAskFlow(state, prompt, { sessionId: state.activeSessionId });
@@ -769,21 +778,21 @@ function dockToSide(state, sourceCard) {
   if (!state.isDockedToSide) {
     state.isDockedToSide = true;
     state.side.root.setAttribute("data-visible", "true");
-    state.side.banner.classList.add("adgent-docking");
+    state.side.banner.classList.add("addie-docking");
     mountBannerToSide(state.side.root);
 
     window.requestAnimationFrame(() => {
-      state.side.banner.classList.add("adgent-side-visible");
+      state.side.banner.classList.add("addie-side-visible");
     });
 
     window.setTimeout(() => {
-      state.side.banner.classList.remove("adgent-docking");
+      state.side.banner.classList.remove("addie-docking");
     }, 360);
   }
 
   if (sourceCard) {
-    sourceCard.classList.add("adgent-feed-card-engaged");
-    const input = sourceCard.querySelector(".adgent-feed-input");
+    sourceCard.classList.add("addie-feed-card-engaged");
+    const input = sourceCard.querySelector(".addie-feed-input");
     if (input) {
       input.setAttribute("disabled", "true");
     }
