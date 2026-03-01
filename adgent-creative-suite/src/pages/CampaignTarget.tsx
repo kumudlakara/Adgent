@@ -38,6 +38,7 @@ export default function CampaignTarget() {
   const [selectedAges, setSelectedAges] = useState<string[]>([]);
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
   const [productUrl, setProductUrl] = useState("");
+  const [productName, setProductName] = useState("");
   const [displayText, setDisplayText] = useState("");
   const [isLaunching, setIsLaunching] = useState(false);
 
@@ -55,6 +56,12 @@ export default function CampaignTarget() {
   };
 
   const handleLaunch = async () => {
+    if (!productName.trim()) {
+      toast.error("Product Name is required", {
+        description: "Please enter a product name before launching.",
+      });
+      return;
+    }
     if (!productUrl.trim()) {
       toast.error("Product URL is required", {
         description: "Please enter a valid product URL before launching.",
@@ -71,14 +78,14 @@ export default function CampaignTarget() {
         /* keep raw value */
       }
 
-      const slug = (displayText || hostname)
+      const slug = (productName.trim())
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, "-")
         .replace(/^-|-$/g, "");
 
       const product = {
         id: slug || "campaign-product",
-        name: displayText || hostname,
+        name: productName.trim(),
         price: "",
         discount: "N/A",
         delivery: "",
@@ -91,19 +98,19 @@ export default function CampaignTarget() {
         suggestions: [
           {
             label: "Learn more",
-            prompt: `Tell me more about ${displayText || hostname}.`,
+            prompt: `Tell me more about ${productName.trim()}.`,
           },
           {
             label: "Check price",
-            prompt: `What is the price of ${displayText || hostname}?`,
+            prompt: `What is the price of ${productName.trim()}?`,
           },
           {
             label: "View details",
-            prompt: `Show me details for ${displayText || hostname}.`,
+            prompt: `Show me details for ${productName.trim()}.`,
           },
           {
             label: "Compare options",
-            prompt: `What are alternatives to ${displayText || hostname}?`,
+            prompt: `What are alternatives to ${productName.trim()}?`,
           },
         ],
       };
@@ -161,6 +168,18 @@ export default function CampaignTarget() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
+          <div>
+            <Label htmlFor="productName">
+              Product Name <span className="text-destructive">*</span>
+            </Label>
+            <Input
+              id="productName"
+              placeholder="e.g. NVIDIA GeForce RTX 5090"
+              className="mt-1.5"
+              value={productName}
+              onChange={(e) => setProductName(e.target.value)}
+            />
+          </div>
           <div>
             <Label htmlFor="productUrl">
               Product URL <span className="text-destructive">*</span>

@@ -440,7 +440,7 @@ function createFeedAdCard(product, state) {
         <span class="addie-feed-promoted">Promoted</span>
       </div>
     </div>
-    <div class="addie-feed-title">${escapeHtml(product.name)}</div>
+    <div class="addie-feed-title">${escapeHtml(product.badge || product.name)}</div>
     ${thumbnailHtml}
     <div class="addie-feed-suggestions">${suggestionsHtml}</div>
     <div class="addie-feed-ask-row">
@@ -647,7 +647,7 @@ function getOrCreateSession(state, feedContext) {
   const session = {
     id: `s-${state.nextSessionId}`,
     key: feedContext?.sessionKey || `manual-${state.nextSessionId}`,
-    label: sourceProduct.name,
+    label: sourceProduct.badge || sourceProduct.name,
     product: { ...sourceProduct },
     lastPrompt: "",
     lastResponse: "",

@@ -1,5 +1,67 @@
 [
   {
+    "id": "msi-nvidia-geforce-rtx-4070-ti",
+    "name": "MSI NVIDIA GeForce RTX 4070 Ti",
+    "price": "",
+    "discount": "N/A",
+    "delivery": "",
+    "availability": "",
+    "category": "custom",
+    "theme": "dark",
+    "badge": "Game On",
+    "thumbnailUrl": "https://im.runware.ai/image/os/w02d10/ws/2/ii/f2fa6146-1cb4-4561-bb50-3813b3350ef3.jpg",
+    "productUrl": "https://marketplace.nvidia.com/en-gb/consumer/graphics-cards/msi-nvidia-geforce-rtx-4070-ti-super-ventus-2x-oc-16gb-gddr6x-ray-tracing-graphics-card-8448-core-2640mhz-boost/",
+    "suggestions": [
+      {
+        "label": "Learn more",
+        "prompt": "Tell me more about MSI NVIDIA GeForce RTX 4070 Ti."
+      },
+      {
+        "label": "Check price",
+        "prompt": "What is the price of MSI NVIDIA GeForce RTX 4070 Ti?"
+      },
+      {
+        "label": "View details",
+        "prompt": "Show me details for MSI NVIDIA GeForce RTX 4070 Ti."
+      },
+      {
+        "label": "Compare options",
+        "prompt": "What are alternatives to MSI NVIDIA GeForce RTX 4070 Ti?"
+      }
+    ]
+  },
+  {
+    "id": "asus-rog-astral-nvidia-geforce-rtx-5090",
+    "name": " ASUS ROG ASTRAL NVIDIA GeForce RTX 5090",
+    "price": "",
+    "discount": "N/A",
+    "delivery": "",
+    "availability": "",
+    "category": "custom",
+    "theme": "dark",
+    "badge": " ASUS ROG ASTRAL NVIDIA GeForce RTX 5090",
+    "thumbnailUrl": "https://im.runware.ai/image/os/w02d10/ws/2/ii/f9b8afd3-c533-4b8d-8ef6-2b38d1722f60.jpg",
+    "productUrl": "https://marketplace.nvidia.com/en-gb/consumer/graphics-cards/asus-rog-astral-nvidia-geforce-rtx-5090-32gb-gaming-oc-blackwell-graphics-card/",
+    "suggestions": [
+      {
+        "label": "Learn more",
+        "prompt": "Tell me more about  ASUS ROG ASTRAL NVIDIA GeForce RTX 5090."
+      },
+      {
+        "label": "Check price",
+        "prompt": "What is the price of  ASUS ROG ASTRAL NVIDIA GeForce RTX 5090?"
+      },
+      {
+        "label": "View details",
+        "prompt": "Show me details for  ASUS ROG ASTRAL NVIDIA GeForce RTX 5090."
+      },
+      {
+        "label": "Compare options",
+        "prompt": "What are alternatives to  ASUS ROG ASTRAL NVIDIA GeForce RTX 5090?"
+      }
+    ]
+  },
+  {
     "id": "rtx-4070ti",
     "name": "RTX 4070Ti",
     "price": "",
